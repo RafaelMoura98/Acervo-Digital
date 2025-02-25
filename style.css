@@ -1,0 +1,140 @@
+#principal{
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin-top: 20px;
+}
+
+#nav{
+    display: flex;
+    gap: 40px;
+}
+
+#menu{
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#menu_button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+#img_logo{
+    width: 128px;
+}
+
+#info_PI{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 20px;
+    border: 2px solid black;
+}
+
+#content_PI{
+    display: flex;
+    flex-direction: column;
+}
+
+#show_PI{
+    width: 700px;
+    height: 300px;
+    display: flex;
+    border: 2px solid black;
+    margin-bottom: 20px;
+}
+
+#titulo_PI{
+    display: flex;
+    gap: 5px;
+    margin-left: 15px;
+    margin-right: 50px;
+    flex-direction: column;
+    text-align: justify;
+    width: 500px;
+}
+
+#button_PI{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+
+.center{
+    display: flex;
+    align-items: center;
+}
+
+.button_menu{
+    background-color: #ddd;
+    border-radius: 300px;
+    padding: 20px 20px;
+    height: 60px;
+    width: 100px;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* header{
+    border: 2px solid black;
+} */
+
+.bgWhite{
+    display: flex;
+    background-color: white;
+    border-radius: 30px;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    width: 50%;
+    height: 70%;
+}
+
+
+.forms{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border: 2px solid #054f77;
+    border-radius: 25px;
+    margin: 0 auto;
+    width: 50%;
+    height: 75%;
+    padding: 20px;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.inputImc{
+    width: 95%;
+    height: 25px;
+    box-shadow: 2px 2px 2px rgb(196, 196, 196);
+    border: none;
+    border-radius: 5px;
+    background-color: #bed4f9;
+    padding: 6px;
+}
+
+.btnCalcular{
+    background-color: #5167b2;
+    width: 72%;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
