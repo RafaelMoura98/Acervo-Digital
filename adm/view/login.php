@@ -9,27 +9,27 @@ include_once("./config/configuracao.php");
 
   <section>
     <div class="box-content">
-        <h1 class="titulo"> ACERVO DIGITAL</h1>
+        <h1 class="titulo">ACERVO DIGITAL</h1>
         <form class="formulario" action="#" method="POST">
           <div class="caixa"> 
             <br>
-            <div class="descricao"> PROJETOS INTEGRADORES</div>
+            <div class="descricao">PROJETOS INTEGRADORES</div>
             <br>
             <br>
             <img class="img" src="imagens/perfil.pgn.png" alt="Perfil" width="100">
             <br>
             <div>
-            <h3 class="p"> Faça Login</p>
+            <h3 class="p">Faça Login</p>
             </div>
             <div class="">
               <div class="email">
                 <label for="email"></label>
-                <input type="text" placeholder="Login" id="login" name="login">
+                <input type="text" placeholder="Login" id="login" name="login" required>
                 <p id="email-ajuda" class="msg-ajuda" style="display:none;"></p>
               </div>
               <div class="senha">
                 <label for="senha"></label>
-                <input type="password" placeholder="Senha" id="senha" name="senha">
+                <input type="password" placeholder="Senha" id="senha" name="senha" required>
                 <p id="tel-ajuda" class="msg-ajuda" style="display:none;">
               </div>
             </div>
@@ -40,7 +40,7 @@ include_once("./config/configuracao.php");
               <br>
             
               <div class="botao">
-            <input class="button" type="button" value="Entrar">
+            <button class="button" type="submit">Entrar</button>
               </div>
             <br>
           </div>
