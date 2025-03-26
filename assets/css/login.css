@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* background: linear-gradient(45deg, #fff7f7, #fff9f9, #ffffff); */
+
+}
+
+
+
+
+.titulo {
+    font-family:'Times New Roman', Times, serif;
+    color: rgb(7, 0, 64);
+    font-size: 70px;
+    height: 20px;
+    display: flex;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+.descricao {
+    font-feature-settings: 10px;
+    color: rgb(0, 28, 243);
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    left: 10%;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 12px;
+    color: rgb(0, 28, 243);
+    text-align: left;
+    display: flex;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* .Logo {
+    display: flex;
+    margin-right: 10px;
+    justify-content: space-around; 
+} */
+
+.img{
+    position: relative;
+    left: 30%;
+
+}
+
+
+.formulario {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+}
+
+.p{
+    color: rgb(0, 28, 243);
+    font-size: 13px;
+    display: flex;
+    margin: left ;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+input {
+    width: 250px;
+    gap: 10px;
+    margin-top: 10px;
+
+    display: flex;
+    padding: 10px;
+    border:  solid 0.5px rgb(0, 28, 243);
+    margin-top: 15px;
+}
+
+
+.caixa {
+    margin: 30px;
+    max-width: 80%;
+    /* display: flex; */
+}
+
+.button {
+    width: 100px;
+    color: #fff;
+    background-color:  rgb(0, 28, 243);
+    border: none;
+    position: relative;
+    left: 30%;
+}
+
+/* input[type="text"],
+input[type="senha"],
+input[type="email"],
+input::placeholder 
+    
+ */
+
+
+.botao {
+    position: relative;
+    left: 4%;
+    
+    
+}
+
+.box-content {
+    display: flex;
+   justify-content: center;
+}
+
+.descricao .img {
+    margin: auto;
+    align-items: center;
+}

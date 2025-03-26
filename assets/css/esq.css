@@ -1,0 +1,83 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}      
+
+.titulo_esq {
+    font-family:'Times New Roman', Times, serif;
+    color: rgb(0, 28, 243);
+    font-size: 60px;
+    text-align: center;
+    margin-top: 10px;
+    left: 100%;
+}
+
+.class{
+    color: rgb(0, 28, 243);
+}
+
+.formulario {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    justify-content: center;
+    text-align: center;
+
+}
+
+.link {
+    text-decoration: none;
+    font-size: 12px;
+    color: rgb(0, 28, 243);
+    text-align: left;
+    display: flex;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-group {
+    width: 390px;
+    /* gap: px; */
+    margin-top: 10px;
+    /* display: flex; */
+    padding: 10px;
+    /* border:  solid 0.5px rgb(0, 28, 243); */
+    /* margin-top: 15px; */
+    
+    
+    
+}
+
+.input-group-addon {
+    /* margin: 30px; */
+    /* max-width: 80%; */
+    align-items: center;
+    color: rgb(0, 28, 243);
+}
+
+.p {
+    font-family:Arial, Helvetica, sans-serif;
+    color: rgb(0, 28, 243);
+    position:relative;
+    /* padding: 1px; */
+    width: 300px;
+    text-align: center;
+    left: 10%;
+
+}
+
+.button {
+    width: 100px;
+    color: #fff;
+    background-color:  rgb(0, 28, 243);
+    border: none;
+    position: relative;
+    /* left: 30%; */
+}
+
+.link {
+    position: relative;
+    left: 39%;
+}
+
