@@ -8,7 +8,7 @@ include_once("./config/configuracao.php");
       <h1 class="titulo_esq">SOLICITAÇÃO DE ALTERAÇÃO DE SENHA</h1>
       <form class="formulario">
         <div class="caixa">
-                <img src="imagens/mobile-password-forgot.png" alt="Perfil" width="100">
+                <img src="./assets/imagens/img_recuperacao.png" alt="Perfil" width="100">
                 <h1 class="class">Redefinir Senha</h1>
                 <p class="p">Digite seu email e clique no botao redefinir </p>
                   

@@ -13,10 +13,12 @@ include_once("./config/configuracao.php");
         <form class="formulario" action="#" method="POST">
           <div class="caixa"> 
             <br>
+            <br>
+            <br>
             <div class="descricao">PROJETOS INTEGRADORES</div>
             <br>
             <br>
-            <img class="img" src="imagens/perfil.pgn.png" alt="Perfil" width="100">
+            <img class="img" src="./assets/imagens/img_login.png" alt="Perfil" width="100">
             <br>
             <div>
             <h3 class="p">Faça Login</p>
