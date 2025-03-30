@@ -1,6 +1,3 @@
-<?php
-// include_once("header.php");
-?>
   <section>
     <div class="box-content">
         <h1 class="titulo">ACERVO DIGITAL</h1>

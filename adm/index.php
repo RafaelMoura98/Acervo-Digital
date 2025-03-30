@@ -9,9 +9,13 @@ if($_GET && isset($_GET['pagina'])){
 if ($paginaUrl === "adm"){
     $caminhoBaseAssets = "./assets/";
     $caminhoBaseConfig = "./config/";
+    $caminhoBaseModel = "./model/";
+    $caminhoBaseController = "./controller/";
 }else {
     $caminhoBaseAssets = "../assets/";
     $caminhoBaseConfig = "../config/";
+    $caminhoBaseModel= "../model/";
+    $caminhoBaseController = "../controller/";
 }
 
 

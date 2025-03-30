@@ -1,10 +1,4 @@
-<?php
-
-// include_once("header.php");
-
-?>
-
-    <section>
+<section>
       <h1 class="titulo_esq">SOLICITAÇÃO DE ALTERAÇÃO DE SENHA</h1>
       <form class="formulario">
         <div class="caixa">
