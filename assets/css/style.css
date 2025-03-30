@@ -1,8 +1,14 @@
-#principal{
+#main{
     display: flex;
-    justify-content: space-between;
-    width: 1200px;
+    flex-direction: row;
     margin-top: 20px;
+    margin-left: 10px;
+}
+
+#content{
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
 }
 
 #nav{
@@ -31,46 +37,55 @@
 #info_PI{
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 20%;
     gap: 20px;
-    border: 2px solid black;
+    margin-right: 20px;
 }
 
 #content_PI{
     display: flex;
     flex-direction: column;
+    width: 90%;
 }
 
-#show_PI{
-    width: 700px;
-    height: 300px;
+.show_PI{
     display: flex;
-    border: 2px solid black;
+    flex-direction: column;
     margin-bottom: 20px;
+    height: 200px;
 }
 
 #titulo_PI{
     display: flex;
-    gap: 5px;
-    margin-left: 15px;
-    margin-right: 50px;
+    gap: 10px;
     flex-direction: column;
     text-align: justify;
-    width: 500px;
 }
 
 #button_PI{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
 }
 
-
-.center{
+.center {
     display: flex;
     align-items: center;
+    gap: 5px; /* Espaço horizontal entre botão de rádio e rótulo */
 }
+
+input[type="radio"] {
+    margin: 0;
+    padding: 0;
+    transform: translateY(-4px); /* Ajuste fino na posição vertical */
+}
+
+label {
+    margin: 0;
+}
+
+
 
 .button_menu{
     background-color: #ddd;
@@ -96,41 +111,4 @@ a{
     align-items: center;
     width: 50%;
     height: 70%;
-}
-
-
-.forms{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    border: 2px solid #054f77;
-    border-radius: 25px;
-    margin: 0 auto;
-    width: 50%;
-    height: 75%;
-    padding: 20px;
-    align-items: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-.inputImc{
-    width: 95%;
-    height: 25px;
-    box-shadow: 2px 2px 2px rgb(196, 196, 196);
-    border: none;
-    border-radius: 5px;
-    background-color: #bed4f9;
-    padding: 6px;
-}
-
-.btnCalcular{
-    background-color: #5167b2;
-    width: 72%;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 10px;
-    border: none;
-    color: white;
-    font-size: 20px;
 }
