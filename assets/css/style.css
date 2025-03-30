@@ -38,35 +38,17 @@
     display: flex;
     flex-direction: column;
     width: 20%;
-    gap: 20px;
-    margin-right: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
 }
 
 #content_PI{
     display: flex;
     flex-direction: column;
     width: 90%;
-}
-
-.show_PI{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    height: 200px;
-}
-
-#titulo_PI{
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    text-align: justify;
-}
-
-#button_PI{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
 }
 
 .center {
@@ -85,8 +67,6 @@ label {
     margin: 0;
 }
 
-
-
 .button_menu{
     background-color: #ddd;
     border-radius: 300px;
@@ -98,17 +78,94 @@ label {
     cursor: pointer;
 }
 
-a{
-    text-decoration: none;
+
+/* Estilo geral */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
 }
 
-.bgWhite{
+/* Container dos cards */
+.card-container {
     display: flex;
-    background-color: white;
-    border-radius: 30px;
-    margin: 0 auto;
-    text-align: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Estilo dos cards */
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+}
+
+.card h4 {
+    font-size: 1.2em;
+    color: #333333;
+}
+
+.card p {
+    font-size: 0.9em;
+    color: #666666;
+}
+
+/* Rodapé dos cards */
+.card-footer {
+    display: flex;
+    margin-top: 15px;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.btn {
+    background-color: #007bff; /* Azul semelhante ao Santander */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Azul mais escuro no hover */
+}
+
+/* Container dos cards */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre os itens */
+}
+
+/* Estilo dos itens com radio */
+.card-radio {
+    display: flex;
     align-items: center;
-    width: 50%;
-    height: 70%;
+    gap: 10px; /* Espaço entre o rádio e o texto */
+    background-color: #ffffff; /* Fundo branco */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    padding: 10px 15px; /* Espaçamento interno */
+}
+
+.card-radio:hover {
+    background-color: #f0f8ff; /* Fundo azul claro no hover */
+}
+
+.card-radio input[type="radio"] {
+    cursor: pointer; /* Cursor interativo no rádio */
+}
+
+.card-radio label {
+    font-size: 1em;
+    color: #333333;
+    cursor: pointer;
 }

@@ -23,7 +23,9 @@ if ($paginaUrl === "adm") {
 
 }elseif ($paginaUrl === "principal")  {
     include_once("model/cursosModel.php");
+    include_once("model/projetosModel.php");
     include_once("controller/cursosController.php");
+    include_once("controller/projetosController.php");
     include_once("view/principal.php");
     
 }elseif ($paginaUrl === "recuperacao") {
