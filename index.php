@@ -7,6 +7,6 @@ if($_GET && isset($_GET['pagina'])){
 }
 
 if ($paginaUrl === "adm") {
-    include_once("./adm/index.php");
+    include_once("adm/index.php");
 }
 

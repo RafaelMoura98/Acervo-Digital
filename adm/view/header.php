@@ -1,3 +1,7 @@
+<?php
+include_once($caminhoBaseConfig."configuracao.php");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,20 +11,17 @@
     
 
 <?php if ($paginaUrl === "principal"):?>
-    <link rel="stylesheet" href="../assets/css/style.css">
-<?php endif;?>
-
-<?php if ($paginaUrl === "adm"):?>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/login.css">
-<?php endif;?>
-
-<?php if ($paginaUrl === "recuperacao"):?>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/esq.css">
+    <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/style.css'?>">
+<?php elseif ($paginaUrl === "adm"):?>
+    <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/style.css'?>">
+    <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/login.css'?>">
+<?php elseif ($paginaUrl === "recuperacao"):?>
+    <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/style.css'?>">
+    <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/esq.css'?>">
 <?php endif;?> 
     
-    <link rel="shortcut icon" href="./assets/imagens/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= $caminhoBaseAssets.'/imagens/logo.ico'?>" type="image/x-icon">  
+    <link rel="shortcut icon" href="<?= $caminhoBaseAssets.'/imagens/logo.ico'?>" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -32,7 +33,7 @@
 <body>
     <header>
         <nav id="nav">
-            <img src="./assets/imagens/logo.ico" id="img_logo">
+        <img src="<?= $caminhoBaseAssets.'/imagens/logo.ico'?>" id="img_logo">
             <div id="menu">
                 <h2 class="center">Acervo Digital</h2>
                 <div id="menu_button">
