@@ -1,3 +1,32 @@
+/* Estilo geral */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: #0C2856;
+}
+
+input[type="radio"] {
+    margin: 0;
+    padding: 0;
+    transform: translateY(-4px); /* Ajuste fino na posição vertical */
+}
+
+label {
+    margin: 0;
+}
+
+.fontWhite{
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 #main{
     display: flex;
     flex-direction: row;
@@ -57,16 +86,6 @@
     gap: 5px; /* Espaço horizontal entre botão de rádio e rótulo */
 }
 
-input[type="radio"] {
-    margin: 0;
-    padding: 0;
-    transform: translateY(-4px); /* Ajuste fino na posição vertical */
-}
-
-label {
-    margin: 0;
-}
-
 .button_menu{
     background-color: #ddd;
     border-radius: 300px;
@@ -76,15 +95,6 @@ label {
     border: none;
     color: black;
     cursor: pointer;
-}
-
-
-/* Estilo geral */
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
 }
 
 /* Container dos cards */
@@ -125,7 +135,7 @@ body {
 }
 
 .btn {
-    background-color: #007bff; /* Azul semelhante ao Santander */
+    background-color: #0C2856; /* Azul semelhante ao Santander */
     color: white;
     border: none;
     border-radius: 5px;
@@ -133,9 +143,6 @@ body {
     cursor: pointer;
 }
 
-.btn:hover {
-    background-color: #0056b3; /* Azul mais escuro no hover */
-}
 
 /* Container dos cards */
 .card-container {

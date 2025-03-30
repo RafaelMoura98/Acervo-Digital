@@ -20,8 +20,7 @@ include_once($caminhoBaseConfig."configuracao.php");
     <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/esq.css'?>">
 <?php endif;?> 
     
-    <link rel="shortcut icon" href="<?= $caminhoBaseAssets.'/imagens/logo.ico'?>" type="image/x-icon">  
-    <link rel="shortcut icon" href="<?= $caminhoBaseAssets.'/imagens/logo.ico'?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= $caminhoBaseAssets.'/imagens/logo.png'?>" type="image/x-icon">  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -33,9 +32,9 @@ include_once($caminhoBaseConfig."configuracao.php");
 <body>
     <header>
         <nav id="nav">
-        <img src="<?= $caminhoBaseAssets.'/imagens/logo.ico'?>" id="img_logo">
+        <img src="<?= $caminhoBaseAssets.'/imagens/logo.png'?>" id="img_logo">
             <div id="menu">
-                <h2 class="center">Acervo Digital</h2>
+                <h2 class="fontWhite">Acervo Digital</h2>
                 <div id="menu_button">
                 <button class="button_menu"><a href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'principal'?>">Home</a></button>
                 <button class="button_menu"><a href="#">Cadastrar PI</a></button>
