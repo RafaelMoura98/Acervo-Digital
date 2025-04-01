@@ -20,6 +20,10 @@ include_once("./config/configuracao.php");
     <link rel="stylesheet" href="./assets/css/esq.css">
     <?php endif;?> 
     
+    <?php if ($paginaUrl === "cadastrarPi"):?>
+    <link rel="stylesheet" href="./assets/css/cadastrarPi.css">
+    <?php endif;?>
+
     <link rel="shortcut icon" href="./assets/imagens/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -37,7 +41,7 @@ include_once("./config/configuracao.php");
                 <h2 class="center">Acervo Digital</h2>
                 <div id="menu_button">
                 <button class="button_menu"><a href="<?= constant('URL_LOCAL_SITE_PAGINA').'adm'?>">Home</a></button>
-                <button class="button_menu"><a href="#">Cadastrar PI</a></button>
+                <button class="button_menu"><a href="<?= constant('URL_LOCAL_SITE_PAGINA').'cadastrarPi'?>">Cadastrar PI</a></button>
                 <button class="button_menu"><a href="<?= constant('URL_LOCAL_SITE_PAGINA').'login'?>">Login</a></button>
                 <button class="button_menu"><a href="#">Sair</a></button>
                 </div>
