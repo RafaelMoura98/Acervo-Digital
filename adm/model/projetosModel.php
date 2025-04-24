@@ -10,9 +10,9 @@ class Projetos
         public static function consultarProjetos($curso, $ano)
     {
         $pdo = Database::conexao();
-        $sql = "SELECT a.*, c.id
-                FROM arquivos_bd a
-                JOIN curso_bd c ON a.id_curso = c.id
+        $sql = "SELECT pi.*, c.id, c.curso
+                FROM pi_bd pi
+                JOIN curso_bd c ON pi.curso = c.id
                 WHERE 1=1";
         $params = [];
 
@@ -22,7 +22,7 @@ class Projetos
         }
 
         if ($ano) {
-            $sql .= " AND a.ano_publi = :ano";
+            $sql .= " AND pi.ano = :ano";
             $params[':ano'] = $ano;
         }
 
@@ -35,12 +35,27 @@ class Projetos
     public static function consultarAnosPubliProjetos()
     {   
         $pdo = Database::conexao();
-        $sql = "SELECT DISTINCT ano_publi FROM arquivos_bd ORDER BY ano_publi ASC;";
+        $sql = "SELECT DISTINCT ano FROM pi_bd ORDER BY ano ASC;";
         $stmt = $pdo->prepare($sql);
         $list = $stmt->execute();
         $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $list;
     }
 
+    public static function buscarPorTermo($termo)
+    {
+        $pdo = Database::conexao();
+        
+        $sql = "SELECT pi.*, c.id, c.curso
+                FROM pi_bd pi
+                JOIN curso_bd c ON pi.curso = c.id 
+                WHERE titulo LIKE :termo OR resumo LIKE :termo LIMIT 5" ;
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':termo', '%' . $termo . '%', PDO::PARAM_STR);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 }

@@ -1,3 +1,4 @@
+<input type="text" id="searchInput" placeholder="Buscar por título ou resumo...">
 <div id="main">
     <div id="info_PI">
         <h3>Cursos</h3>
@@ -13,8 +14,8 @@
         <div class="card-container">
             <?php foreach (Projetos::consultarAnosPubliProjetos() as $ano_publi): ?>
                 <div class="card-radio">
-                    <input type="radio" id="<?= $ano_publi['ano_publi'] ?>" name="ano" value="<?= $ano_publi['ano_publi'] ?>">
-                    <label for="<?= $ano_publi['ano_publi'] ?>"><?= $ano_publi['ano_publi'] ?></label>
+                    <input type="radio" id="<?= $ano_publi['ano'] ?>" name="ano" value="<?= $ano_publi['ano'] ?>">
+                    <label for="<?= $ano_publi['ano'] ?>"><?= $ano_publi['ano'] ?></label>
                 </div>
             <?php endforeach ?>
         </div>
@@ -28,60 +29,74 @@
 </body>
 <script>
     $(document).ready(function () {
-        // Chamando a função de carregamento ao mudar curso ou ano
-        $("input[name='curso'], input[name='ano']").change(function () {
-            carregarPI();
-        });
+    // Configura o debounce para a busca
+    let timeout;
+    
+    // Dispara a busca quando:
+    // 1. O usuário digita na barra de pesquisa (com debounce)
+    // 2. Ou quando um filtro (curso/ano) é alterado
+    $("#searchInput").on("input", function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(carregarPI, 300); // Debounce de 300ms
     });
 
-    function carregarPI() {
-        let curso = $("input[name='curso']:checked").val() || ""; // Se não selecionado, será uma string vazia
-        let ano = $("input[name='ano']:checked").val() || "";
+    $("input[name='curso'], input[name='ano']").change(carregarPI);
 
-        console.log(curso);
-        console.log(ano);
+    carregarPI();
+});
 
-        // Só faz a requisição se pelo menos um dos filtros tiver valor
-        if (curso === "" && ano === "") {
-            console.warn("Nenhum filtro selecionado.");
-            return;
-        }
+function carregarPI() {
+    // Pega os valores dos filtros
+    const curso = $("input[name='curso']:checked").val() || "";
+    const ano = $("input[name='ano']:checked").val() || "";
+    const termoBusca = $("#searchInput").val().trim();
 
-        $.ajax({
-            url: "./controller/projetosController.php",
-            type: "POST",
-            data: { 
-                curso: curso,
-                ano: ano
-            },
-            dataType: "json",
-            success: function (data) {
-                let contentDiv = $("#content_PI");
-                contentDiv.empty();
+    // Se NENHUM filtro estiver selecionado E a barra de pesquisa estiver vazia
+    if (curso === "" && ano === "" && termoBusca === "") {
+        console.log("Nenhum filtro ou termo de busca selecionado.");
+        $("#content_PI").html('<p class="center">Selecione um filtro ou digite uma busca.</p>');
+        return;
+    }
 
-                if (data.length > 0) {
-                    data.forEach(projeto => {
-                        contentDiv.append(`
-                            <div class="card-container">
-                                <div class="card">
-                                    <h3>${projeto.titulo}</h3>
-                                    <p>${projeto.resumo}</p>
-                                    <div class="card-footer">
-                                        <button class="btn">BAIXAR</button>
-                                        <button class="btn">VER ONLINE</button>
-                                    </div>
+    // Faz a requisição AJAX
+    $.ajax({
+        url: "./controller/projetosController.php",
+        type: "POST",
+        data: { 
+            curso: curso,
+            ano: ano,
+            termo: termoBusca
+        },
+        dataType: "json",
+        success: function (data) {
+            const contentDiv = $("#content_PI");
+            contentDiv.empty();
+
+            if (data.length > 0) {
+                data.forEach(projeto => {
+                    contentDiv.append(`
+                        <div class="card-container">
+                            <div class="card">
+                                <h3>${projeto.titulo}</h3>
+                                <p>${projeto.resumo}</p>
+                                <p>Curso: ${projeto.curso}</p>
+                                <div class="card-footer">
+                                    <button class="btn">BAIXAR</button>
+                                    <button class="btn">VER ONLINE</button>
                                 </div>
                             </div>
-                        `);
-                    });
-                } else {
-                    contentDiv.html("<p>Nenhum projeto encontrado.</p>");
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error("Erro na requisição:", xhr.responseText);
+                        </div>
+                    `);
+                });
+            } else {
+                contentDiv.html('<p class="center">Nenhum projeto encontrado.</p>');
             }
-        });
-    }
+        },
+        error: function (xhr, status, error) {
+            console.error("Erro na requisição:", error);
+            $("#content_PI").html('<p class="center">Erro ao carregar projetos.</p>');
+        }
+    });
+}
 </script>
 </html>

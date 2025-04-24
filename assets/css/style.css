@@ -82,6 +82,7 @@ label {
 
 .center {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 5px; /* Espaço horizontal entre botão de rádio e rótulo */
 }
