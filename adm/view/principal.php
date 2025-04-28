@@ -1,4 +1,6 @@
-<input type="text" id="searchInput" placeholder="Buscar por título ou resumo...">
+<div class="container-search">
+    <input  type="text" class="search-bar" id="searchInput" placeholder="Buscar por título ou resumo...">
+</div>
 <div id="main">
     <div id="info_PI">
         <h3>Cursos</h3>
@@ -29,15 +31,11 @@
 </body>
 <script>
     $(document).ready(function () {
-    // Configura o debounce para a busca
     let timeout;
     
-    // Dispara a busca quando:
-    // 1. O usuário digita na barra de pesquisa (com debounce)
-    // 2. Ou quando um filtro (curso/ano) é alterado
     $("#searchInput").on("input", function() {
         clearTimeout(timeout);
-        timeout = setTimeout(carregarPI, 300); // Debounce de 300ms
+        timeout = setTimeout(carregarPI, 400);
     });
 
     $("input[name='curso'], input[name='ano']").change(carregarPI);
@@ -46,6 +44,7 @@
 });
 
 function carregarPI() {
+
     // Pega os valores dos filtros
     const curso = $("input[name='curso']:checked").val() || "";
     const ano = $("input[name='ano']:checked").val() || "";

@@ -27,7 +27,4 @@ define("URL_LOCAL_SITE_PAGINA",constant("URL_LOCAL_SITE")."?pagina=");
 define("URL_LOCAL_SITE_PAGINA_ADM",constant("URL_LOCAL_SITE")."/adm/?pagina=");
 
 
-
-
-// define("URL_LOCAL_IMG",constant(("URL_LOCAL_BASE")."./imagens/"));
 ?>
