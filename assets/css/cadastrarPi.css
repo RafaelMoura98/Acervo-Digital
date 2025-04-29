@@ -1,81 +1,122 @@
-*{
-    margin: 0px;
-    padding: 0px;
+/* Reset básico para elementos comuns */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+/* Adiciona box-sizing para evitar problemas de espaçamento */
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 body {
-    background-color: rgb(221, 228, 245);
+    background-color: rgb(221, 228, 245); /* Cor de fundo clara */
+    font-family: Arial, sans-serif; /* Define uma fonte padrão */
+    color: #333; /* Define uma cor de texto padrão */
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove preenchimento padrão */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que o body ocupe toda a altura da tela */
 }
 
 section {
     padding: 70px;
     display: flex;
     justify-content: center;
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que a seção ocupe toda a altura da tela */
+    background-color: rgb(221, 228, 245); /* Cor de fundo clara para destaque */
 }
-
 
 .form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    justify-content: center;
+    position: relative; /* Alterado para evitar sobreposição */
+    margin: auto; /* Centraliza horizontalmente */
+    max-width: 500px; /* Define uma largura máxima */
+    width: 90%; /* Responsivo */
+    padding: 20px; /* Adicionado espaçamento interno */
+    background-color: white; /* Adicionado fundo branco para destaque */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
     text-align: center;
-
 }
 
-.titulo,
-.resumo,
-.curso,
-.ano,
-.arquivo {
+.input-box {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px; /* Aumentado para melhorar o espaçamento */
   width: 100%;
+  max-width: 400px; /* Define uma largura máxima para centralizar melhor */
   align-items: center;
+  margin: 0 auto; /* Centraliza horizontalmente */
 }
 
-input {
-    width: 70%;
-    height: 30px;
-    box-shadow: 2px 2px 2px rgb(196, 196, 196);
-    border: none;
+input,
+select {
+    width: 100%; /* Ajustado para ocupar toda a largura do container */
+    max-width: 400px; /* Define uma largura máxima para responsividade */
+    height: 40px; /* Aumentado para melhorar a usabilidade */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+    border: 1px solid #ccc; /* Adicionado uma borda leve */
     border-radius: 5px;
-    background-color: #bed4f9;
-  }
+    background-color: #f0f4fc; /* Cor de fundo mais clara */
+    padding: 8px; /* Adicionado espaçamento interno */
+    font-size: 16px; /* Tamanho de fonte ajustado */
+    margin-bottom: 15px; /* Espaçamento inferior entre os campos */
+}
 
 .btnEnviar {
     background-color: #5167b2;
-    width: 25%;
-    padding: 8px;
+    width: 30%; /* Ajustado para ser mais proporcional */
+    max-width: 200px; /* Define um limite máximo de largura */
+    padding: 10px; /* Aumentado para melhorar a usabilidade */
     cursor: pointer;
     border-radius: 10px;
     border: none;
     color: white;
-    font-size: 20px;
+    font-size: 16px; /* Fonte ligeiramente maior para melhor legibilidade */
+    font-weight: bold; /* Adicionado para destacar o texto */
+    transition: background-color 0.3s ease; /* Transição suave para hover */
+    margin: 10px auto; /* Centraliza o botão */
+    display: block; /* Garante que o botão seja tratado como um bloco */
 }
 
 .btnEnviar:hover {
-    background-color: #86a0cc;
+    background-color: #86a0cc; /* Cor mais clara ao passar o mouse */
 }
 
 input[type="text"],
 input[type="file"],
 input[type="email"],
-textarea,
+input[type="arquivo"],
+textarea {
+  width: 100%; /* Garante que os campos ocupem toda a largura disponível */
+  max-width: 400px; /* Define um limite máximo para responsividade */
+  font-size: 16px; /* Ajusta o tamanho da fonte para melhor legibilidade */
+  padding: 10px; /* Adiciona espaçamento interno */
+  margin-bottom: 15px; /* Espaçamento inferior entre os campos */
+  border: 1px solid #ccc; /* Adiciona uma borda leve */
+  border-radius: 5px; /* Bordas arredondadas para um design moderno */
+  background-color: #f0f4fc; /* Cor de fundo clara */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
+}
+
 textarea::placeholder,
 input::placeholder {
-  font-size: medium;
-  padding: 8px;
+  font-size: 14px; /* Ajusta o tamanho da fonte do placeholder */
+  color: #888; /* Cor mais clara para o placeholder */
 }
 
 .registro .input-box textarea {
-    resize: none;
-    height: 100px;
-    width: 90%;
-    box-shadow: 2px 2px 2px rgb(196, 196, 196);
-    border: none;
-    border-radius: 5px;
-    background-color: #bed4f9;
+    resize: none; /* Impede o redimensionamento */
+    height: 120px; /* Aumentado para melhorar a usabilidade */
+    width: 100%; /* Garante que ocupe toda a largura disponível */
+    max-width: 400px; /* Define um limite máximo para responsividade */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+    border: 1px solid #ccc; /* Adiciona uma borda leve */
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #f0f4fc; /* Cor de fundo clara */
+    padding: 10px; /* Adiciona espaçamento interno */
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+    margin-bottom: 15px; /* Espaçamento inferior */
 }
