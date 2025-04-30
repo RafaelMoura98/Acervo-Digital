@@ -4,8 +4,8 @@
 }      
 
 .titulo_esq {
-    font-family:'Times New Roman', Times, serif;
-    color: rgb(0, 28, 243);
+  
+    color: #0C2856;
     font-size: 60px;
     text-align: center;
     margin-top: 10px;
@@ -13,7 +13,7 @@
 }
 
 .class{
-    color: rgb(0, 28, 243);
+    color: #0C2856;
 }
 
 .formulario {
@@ -29,7 +29,7 @@
 .link {
     text-decoration: none;
     font-size: 12px;
-    color: rgb(0, 28, 243);
+    color: #0C2856;
     text-align: left;
     display: flex;
     margin-top: 10px;
@@ -37,30 +37,26 @@
 }
 
 .input-group {
-    width: 390px;
+    width: 350px;
     /* gap: px; */
     margin-top: 10px;
     /* display: flex; */
-    padding: 10px;
+    padding: 25px;
     /* border:  solid 0.5px rgb(0, 28, 243); */
-    /* margin-top: 15px; */
-    
-    
-    
+    margin-top: 30px;
 }
 
 .input-group-addon {
     /* margin: 30px; */
     /* max-width: 80%; */
     align-items: center;
-    color: rgb(0, 28, 243);
+    
 }
 
 .p {
     font-family:Arial, Helvetica, sans-serif;
-    color: rgb(0, 28, 243);
+    color: #0C2856;
     position:relative;
-    /* padding: 1px; */
     width: 300px;
     text-align: center;
     left: 10%;
@@ -70,8 +66,8 @@
 .button {
     width: 100px;
     color: #fff;
-    background-color:  rgb(0, 28, 243);
-    border: none;
+    background-color: #0C2856;
+    border-radius: 50px;
     position: relative;
     /* left: 30%; */
 }
@@ -81,3 +77,13 @@
     left: 39%;
 }
 
+.glyphicon {
+
+    color: #0C2856;
+}
+
+input {
+
+    color: #0C2856;
+
+}

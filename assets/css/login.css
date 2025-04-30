@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family:'Poppins', sans-serif;
 
 }
 
@@ -8,8 +9,8 @@
 
 
 .titulo {
-    font-family:'Times New Roman', Times, serif;
-    color: rgb(7, 0, 64);
+
+    color: #0C2856;
     font-size: 70px;
     height: 20px;
     display: flex;
@@ -19,21 +20,23 @@
 
 
 .descricao {
-    font-feature-settings: 10px;
-    color: rgb(0, 28, 243);
-    font-family: Arial, Helvetica, sans-serif;
-    position: relative;
-    left: 10%;
+
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 19px;
+    color: #0C2856;
+    position: center;
+    /* left: %; */
 }
 
 .link {
     text-decoration: none;
     font-size: 12px;
-    color: rgb(0, 28, 243);
+    color: #0C2856;
     text-align: left;
     display: flex;
-    margin-top: 10px;
+    margin-left: 30%;
     font-family: Arial, Helvetica, sans-serif;
+   
 }
 
 /* .Logo {
@@ -58,7 +61,7 @@
 }
 
 .p{
-    color: rgb(0, 28, 243);
+    color: #0C2856;
     font-size: 13px;
     display: flex;
     margin: left ;
@@ -73,7 +76,7 @@ input {
 
     display: flex;
     padding: 10px;
-    border:  solid 0.5px rgb(0, 28, 243);
+    border:  solid 0.5px #0C2856;
     margin-top: 15px;
 }
 
@@ -87,10 +90,11 @@ input {
 .button {
     width: 100px;
     color: #fff;
-    background-color:  rgb(0, 28, 243);
-    border: none;
-    position: relative;
-    left: 30%;
+    background-color: #0C2856;;
+    border-radius: 70px;
+    margin-left: 25%;
+    
+    
 }
 
 /* input[type="text"],
@@ -117,3 +121,4 @@ input::placeholder
     margin: auto;
     align-items: center;
 }
+
