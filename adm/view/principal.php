@@ -79,6 +79,7 @@ function carregarPI() {
                                 <h3>${projeto.titulo}</h3>
                                 <p>${projeto.resumo}</p>
                                 <p>Curso: ${projeto.curso}</p>
+                                <p>Ano de publicação: ${projeto.ano}</p>
                                 <div class="card-footer">
                                     <button class="btn">BAIXAR</button>
                                     <button class="btn">VER ONLINE</button>
