@@ -6,7 +6,6 @@ if($_GET && isset($_GET['pagina'])){
     $paginaUrl = null;
 }
 
-if ($paginaUrl === "adm") {
-    include_once("adm/index.php");
+if ($paginaUrl === "principal") {
+    $objCursos = new Cursos();
 }
-

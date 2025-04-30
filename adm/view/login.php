@@ -1,12 +1,3 @@
-<?php
-
-include_once("./adm/view/header.php");
-include_once("./config/configuracao.php");
-
-?>
-
-
-
   <section>
     <div class="box-content">
         <h1 class="titulo">ACERVO DIGITAL</h1>
@@ -18,7 +9,7 @@ include_once("./config/configuracao.php");
             <div class="descricao">PROJETOS INTEGRADORES</div>
             <br>
             <br>
-            <img class="img" src="./assets/imagens/img_login.png" alt="Perfil" width="100">
+            <img class="img" src="<?= $caminhoBaseAssets.'/imagens/img_login.png'?>" alt="Perfil" width="100">
             <br>
             <div>
             <h3 class="p">Faça Login</p>
@@ -36,7 +27,7 @@ include_once("./config/configuracao.php");
               </div>
             </div>
             <div>
-              <a class="link" href="<?= constant('URL_LOCAL_SITE_PAGINA').'recuperacao'?>">Esqueci a senha</a> </class>
+              <a class="link" href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'recuperacao'?>">Esqueci a senha</a> </class>
             </div>
               <br>
               <br>

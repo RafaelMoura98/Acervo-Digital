@@ -1,8 +1,43 @@
-#principal{
+/* Estilo geral */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: #0C2856;
+}
+
+input[type="radio"] {
+    margin: 0;
+    padding: 0;
+    transform: translateY(-4px); /* Ajuste fino na posição vertical */
+}
+
+label {
+    margin: 0;
+}
+
+.fontWhite{
+    color: #ffffff;
     display: flex;
-    justify-content: space-between;
-    width: 1200px;
+    align-items: center;
+    gap: 5px;
+}
+
+#main{
+    display: flex;
+    flex-direction: row;
     margin-top: 20px;
+    margin-left: 10px;
+}
+
+#content{
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
 }
 
 #nav{
@@ -31,45 +66,25 @@
 #info_PI{
     display: flex;
     flex-direction: column;
-    width: 400px;
-    gap: 20px;
-    border: 2px solid black;
+    width: 20%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
 }
 
 #content_PI{
     display: flex;
     flex-direction: column;
+    width: 90%;
 }
 
-#show_PI{
-    width: 700px;
-    height: 300px;
+.center {
     display: flex;
-    border: 2px solid black;
-    margin-bottom: 20px;
-}
-
-#titulo_PI{
-    display: flex;
-    gap: 5px;
-    margin-left: 15px;
-    margin-right: 50px;
-    flex-direction: column;
-    text-align: justify;
-    width: 500px;
-}
-
-#button_PI{
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    gap: 30px;
-}
-
-
-.center{
-    display: flex;
     align-items: center;
+    gap: 5px; /* Espaço horizontal entre botão de rádio e rótulo */
 }
 
 .button_menu{
@@ -83,54 +98,97 @@
     cursor: pointer;
 }
 
-a{
-    text-decoration: none;
-}
-
-.bgWhite{
+/* Container dos cards */
+.card-container {
     display: flex;
-    background-color: white;
-    border-radius: 30px;
-    margin: 0 auto;
-    text-align: center;
-    align-items: center;
-    width: 50%;
-    height: 70%;
-}
-
-
-.forms{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    border: 2px solid #054f77;
-    border-radius: 25px;
-    margin: 0 auto;
-    width: 50%;
-    height: 75%;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     padding: 20px;
-    align-items: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
 }
 
-.inputImc{
-    width: 95%;
-    height: 25px;
-    box-shadow: 2px 2px 2px rgb(196, 196, 196);
+/* Estilo dos cards */
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+}
+
+.card h4 {
+    font-size: 1.2em;
+    color: #333333;
+}
+
+.card p {
+    font-size: 0.9em;
+    color: #666666;
+}
+
+/* Rodapé dos cards */
+.card-footer {
+    display: flex;
+    margin-top: 15px;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.btn {
+    background-color: #0C2856; /* Azul semelhante ao Santander */
+    color: white;
     border: none;
     border-radius: 5px;
-    background-color: #bed4f9;
-    padding: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
 }
 
-.btnCalcular{
-    background-color: #5167b2;
-    width: 72%;
-    padding: 10px;
+
+/* Container dos cards */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre os itens */
+}
+
+/* Estilo dos itens com radio */
+.card-radio {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o rádio e o texto */
+    background-color: #ffffff; /* Fundo branco */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    padding: 10px 15px; /* Espaçamento interno */
+}
+
+.card-radio:hover {
+    background-color: #f0f8ff; /* Fundo azul claro no hover */
+}
+
+.card-radio input[type="radio"] {
+    cursor: pointer; /* Cursor interativo no rádio */
+}
+
+.card-radio label {
+    font-size: 1em;
+    color: #333333;
     cursor: pointer;
-    border-radius: 10px;
-    border: none;
-    color: white;
-    font-size: 20px;
+}
+
+.container-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  margin: 10px;
+}
+
+.search-bar {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 30%;
 }
