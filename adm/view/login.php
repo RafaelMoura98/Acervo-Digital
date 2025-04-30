@@ -1,12 +1,3 @@
-<?php
-
-include_once("./adm/view/header.php");
-include_once("./config/configuracao.php");
-
-?>
-
-
-
   <section>
     <div class="box-content">
         <h1 class="titulo">ACERVO DIGITAL</h1>
@@ -18,12 +9,9 @@ include_once("./config/configuracao.php");
             <div class="descricao">PROJETOS INTEGRADORES</div>
             <br>
             <br>
-            <img class="img" src="./assets/imagens/img_login.png" alt="Perfil" width="100">
+            <img class="img" src="<?= $caminhoBaseAssets.'/imagens/img_login.png'?>" alt="Perfil" width="100">
             <br>
-            <div>
-            <h3 class="p">Faça Login</p>
-            </div>
-            <div class="">
+            <br>
               <div class="email">
                 <label for="email"></label>
                 <input type="text" placeholder="Login" id="login" name="login" required>
@@ -35,17 +23,13 @@ include_once("./config/configuracao.php");
                 <p id="tel-ajuda" class="msg-ajuda" style="display:none;">
               </div>
             </div>
-            <div>
-              <a class="link" href="<?= constant('URL_LOCAL_SITE_PAGINA').'recuperacao'?>">Esqueci a senha</a> </class>
+            <div class="botao">
+          <button class="button" type="submit">Entrar</button>
             </div>
-              <br>
-              <br>
-            
-              <div class="botao">
-            <button class="button" type="submit">Entrar</button>
-              </div>
-            <br>
-          </div>
+          <br>
+            <div>
+              <a class="link" href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'recuperacao'?>">Esqueci a senha</a> </class>
+            </div>
         </form>
      
     </div>
