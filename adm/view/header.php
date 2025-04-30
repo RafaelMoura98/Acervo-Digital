@@ -11,28 +11,30 @@ include_once("./config/configuracao.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acervo Digital</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-
+    
     <?php if ($paginaUrl === "login"):?>
     <link rel="stylesheet" href="./assets/css/login.css">
     <?php endif;?>
 
     <?php if ($paginaUrl === "recuperacao"):?>
-    <link rel="stylesheet" href="./assets/css/esq.css">
+    <link rel="stylesheet" href="./assets/css/recuperar.css"> 
     <?php endif;?> 
+
     
     <link rel="shortcut icon" href="./assets/imagens/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script divsrc="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
     </style>
 
 </head>
 <body>
-    <header>
-        <nav id="nav">
-            <img src="./assets/imagens/logo.ico" id="img_logo">
+    <!-- <div class="container"> -->
+    <header class="header">
+        <!-- <nav id="nav"> -->
+            <img src="./assets/imagens/logoete.png" id="img_logo">
             <div id="menu">
                 <h2 class="center">Acervo Digital</h2>
                 <div id="menu_button">

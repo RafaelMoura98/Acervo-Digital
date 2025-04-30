@@ -70,6 +70,8 @@
 .center{
     display: flex;
     align-items: center;
+    color: rgb(255, 255, 255);
+    
 }
 
 .button_menu{
@@ -79,7 +81,7 @@
     height: 60px;
     width: 100px;
     border: none;
-    color: black;
+    color: #0C2856;
     cursor: pointer;
 }
 
@@ -103,7 +105,7 @@ a{
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    border: 2px solid #054f77;
+    border: 2px solid#0C2856;;
     border-radius: 25px;
     margin: 0 auto;
     width: 50%;
@@ -134,3 +136,11 @@ a{
     color: white;
     font-size: 20px;
 }
+
+.header {
+    background: #0C2856;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
