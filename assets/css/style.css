@@ -84,19 +84,25 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px; /* Espaço horizontal entre botão de rádio e rótulo */
+    gap: 5px;
 }
 
-.button_menu{
+.button_menu {
     background-color: #ddd;
     border-radius: 300px;
     padding: 20px 20px;
     height: 60px;
-    width: 100px;
+    width: 105px;
     border: none;
     color: #0C2856;
     cursor: pointer;
-}
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: normal;
+    word-break: break-word;
+  }
 
 /* Container dos cards */
 .card-container {

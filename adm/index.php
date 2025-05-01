@@ -24,15 +24,15 @@ include_once("view/header.php");
 
 if ($paginaUrl === "adm") {
     include_once("view/login.php");
-
 }elseif ($paginaUrl === "principal")  {
     include_once("model/cursosModel.php");
     include_once("model/projetosModel.php");
     include_once("controller/cursosController.php");
     include_once("controller/projetosController.php");
     include_once("view/principal.php");
-    
 }elseif ($paginaUrl === "recuperacao") {
     include_once("view/recuperacao.php");
+}elseif ($paginaUrl === "cadastrarPI") {
+    include_once("view/cadastrarPI.php");
 }
 

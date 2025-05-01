@@ -15,24 +15,23 @@ body {
     color: #333; /* Define uma cor de texto padrão */
     margin: 0; /* Remove margens padrão */
     padding: 0; /* Remove preenchimento padrão */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+    /* Removendo o flexbox do body para permitir o fluxo normal */
+    /* justify-content: center; */
+    /* align-items: center; */
     min-height: 100vh; /* Garante que o body ocupe toda a altura da tela */
 }
 
 section {
-    padding: 70px;
+    padding: 70px 20px; /* Adicione margens laterais para evitar que o conteúdo toque as bordas em telas menores */
     display: flex;
-    justify-content: center;
-<<<<<<< HEAD
-    align-items: center; /* Centraliza verticalmente */
-    min-height: 100vh; /* Garante que a seção ocupe toda a altura da tela */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente dentro da section */
+    align-items: center; /* Centraliza o conteúdo verticalmente dentro da section */
+    min-height: calc(100vh - altura_do_seu_header); /* Ajusta a altura para não sobrepor o header fixo */
     background-color: rgb(221, 228, 245); /* Cor de fundo clara para destaque */
 }
 
-.form {
-    position: relative; /* Alterado para evitar sobreposição */
-    margin: auto; /* Centraliza horizontalmente */
+.registro-container { /* Renomeei para ser mais específico */
+    margin: 20px auto; /* Adiciona margem superior e inferior e centraliza horizontalmente */
     max-width: 500px; /* Define uma largura máxima */
     width: 90%; /* Responsivo */
     padding: 20px; /* Adicionado espaçamento interno */
@@ -43,147 +42,60 @@ section {
 }
 
 .input-box {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* Aumentado para melhorar o espaçamento */
-  width: 100%;
-  max-width: 400px; /* Define uma largura máxima para centralizar melhor */
-  align-items: center;
-  margin: 0 auto; /* Centraliza horizontalmente */
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Ajustei para um valor menor */
+    width: 100%;
+    max-width: 400px;
+    margin: 15px auto; /* Adicionei margem superior e inferior */
+    text-align: left; /* Alinha os labels à esquerda */
 }
 
-input,
-select {
-    width: 100%; /* Ajustado para ocupar toda a largura do container */
-    max-width: 400px; /* Define uma largura máxima para responsividade */
-    height: 40px; /* Aumentado para melhorar a usabilidade */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
-    border: 1px solid #ccc; /* Adicionado uma borda leve */
-    border-radius: 5px;
-    background-color: #f0f4fc; /* Cor de fundo mais clara */
-    padding: 8px; /* Adicionado espaçamento interno */
-    font-size: 16px; /* Tamanho de fonte ajustado */
-    margin-bottom: 15px; /* Espaçamento inferior entre os campos */
-}
-
-.btnEnviar {
-    background-color: #5167b2;
-    width: 30%; /* Ajustado para ser mais proporcional */
-    max-width: 200px; /* Define um limite máximo de largura */
-    padding: 10px; /* Aumentado para melhorar a usabilidade */
-=======
-}
-
-
-.form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    justify-content: center;
-    text-align: center;
-
-}
-
-.titulo,
-.resumo,
-.curso,
-.ano,
-.arquivo {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  align-items: center;
-}
-
-input {
-    width: 70%;
-    height: 30px;
-    box-shadow: 2px 2px 2px rgb(196, 196, 196);
-    border: none;
-    border-radius: 5px;
-    background-color: #bed4f9;
-  }
-
-.btnEnviar {
-    background-color: #5167b2;
-    width: 25%;
-    padding: 8px;
->>>>>>> f1fde7fb2ec1e82318a624c555fb58c2e63f7113
-    cursor: pointer;
-    border-radius: 10px;
-    border: none;
-    color: white;
-<<<<<<< HEAD
-    font-size: 16px; /* Fonte ligeiramente maior para melhor legibilidade */
-    font-weight: bold; /* Adicionado para destacar o texto */
-    transition: background-color 0.3s ease; /* Transição suave para hover */
-    margin: 10px auto; /* Centraliza o botão */
-    display: block; /* Garante que o botão seja tratado como um bloco */
-}
-
-.btnEnviar:hover {
-    background-color: #86a0cc; /* Cor mais clara ao passar o mouse */
-=======
-    font-size: 20px;
-}
-
-.btnEnviar:hover {
-    background-color: #86a0cc;
->>>>>>> f1fde7fb2ec1e82318a624c555fb58c2e63f7113
+.input-box label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #555;
 }
 
 input[type="text"],
 input[type="file"],
-input[type="email"],
-<<<<<<< HEAD
-input[type="arquivo"],
+select,
 textarea {
-  width: 100%; /* Garante que os campos ocupem toda a largura disponível */
-  max-width: 400px; /* Define um limite máximo para responsividade */
-  font-size: 16px; /* Ajusta o tamanho da fonte para melhor legibilidade */
-  padding: 10px; /* Adiciona espaçamento interno */
-  margin-bottom: 15px; /* Espaçamento inferior entre os campos */
-  border: 1px solid #ccc; /* Adiciona uma borda leve */
-  border-radius: 5px; /* Bordas arredondadas para um design moderno */
-  background-color: #f0f4fc; /* Cor de fundo clara */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f4fc;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.05);
+    font-size: 16px;
+    margin-top: 5px; /* Adicionei um pouco de espaço entre o label e o input */
+    margin-bottom: 10px; /* Reduzi um pouco a margem inferior */
 }
 
-textarea::placeholder,
-input::placeholder {
-  font-size: 14px; /* Ajusta o tamanho da fonte do placeholder */
-  color: #888; /* Cor mais clara para o placeholder */
-}
-
-.registro .input-box textarea {
-    resize: none; /* Impede o redimensionamento */
-    height: 120px; /* Aumentado para melhorar a usabilidade */
-    width: 100%; /* Garante que ocupe toda a largura disponível */
-    max-width: 400px; /* Define um limite máximo para responsividade */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
-    border: 1px solid #ccc; /* Adiciona uma borda leve */
-    border-radius: 5px; /* Bordas arredondadas */
-    background-color: #f0f4fc; /* Cor de fundo clara */
-    padding: 10px; /* Adiciona espaçamento interno */
-    font-size: 16px; /* Ajusta o tamanho da fonte */
-    margin-bottom: 15px; /* Espaçamento inferior */
-=======
-textarea,
-textarea::placeholder,
-input::placeholder {
-  font-size: medium;
-  padding: 8px;
-}
-
-.registro .input-box textarea {
+textarea {
     resize: none;
     height: 100px;
-    width: 90%;
-    box-shadow: 2px 2px 2px rgb(196, 196, 196);
+}
+
+.curso-select {
+    height: 40px;
+}
+
+.btnEnviar {
+    background-color: #5167b2;
+    color: white;
+    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    background-color: #bed4f9;
->>>>>>> f1fde7fb2ec1e82318a624c555fb58c2e63f7113
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, font-size 0.3s ease;
+    margin-top: 20px;
+    width: auto; /* Ajusta a largura ao conteúdo */
+}
+
+.btnEnviar:hover {
+    background-color: #86a0cc;
+    font-size: 18px;
 }

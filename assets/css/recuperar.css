@@ -38,17 +38,12 @@
 
 .input-group {
     width: 350px;
-    /* gap: px; */
     margin-top: 10px;
-    /* display: flex; */
     padding: 25px;
-    /* border:  solid 0.5px rgb(0, 28, 243); */
     margin-top: 30px;
 }
 
 .input-group-addon {
-    /* margin: 30px; */
-    /* max-width: 80%; */
     align-items: center;
     
 }
@@ -69,7 +64,6 @@
     background-color: #0C2856;
     border-radius: 50px;
     position: relative;
-    /* left: 30%; */
 }
 
 .link {

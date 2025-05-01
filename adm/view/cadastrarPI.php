@@ -1,10 +1,9 @@
 <?php
-include_once("./config/configuracao.php");
-include_once("./adm/view/header.php");
+include_once("view/header.php");
 ?>
 
 <section>
-    <div class="registro">
+    <div class="registro-container">
         <form class="form" method="POST" action="#">
             <h1><b>Cadastro Projeto Integrador</b></h1>
             <div class="input-box">
