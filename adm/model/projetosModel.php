@@ -58,4 +58,34 @@ class Projetos
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function ultimosProjetos()
+    {
+        $pdo = Database::conexao();
+        $sql = "SELECT pi.*, c.id AS curso_id, c.curso AS nome_curso
+                FROM pi_bd pi
+                JOIN curso_bd c ON pi.curso = c.id
+                ORDER BY pi.data DESC
+                LIMIT 5";
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function ProjetosMaisCurtidos()
+    {
+        $pdo = Database::conexao();
+        $sql = "SELECT pi.*, c.id AS curso_id, c.curso AS nome_curso
+                FROM pi_bd pi
+                JOIN curso_bd c ON pi.curso = c.id
+                ORDER BY pi.like_pi DESC
+                LIMIT 5";
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }

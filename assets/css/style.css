@@ -44,6 +44,12 @@ a {
     width: 80%;
 }
 
+#content_PI h1 {
+    text-align: center; /* Centraliza o texto horizontalmente */
+    margin-top: 20px; /* Adiciona um espaço acima do título, se necessário */
+    margin-bottom: 10px; /* Adiciona um espaço abaixo do título, se necessário */
+}
+
 #nav{
     display: flex;
     gap: 40px;
@@ -213,9 +219,10 @@ a {
     font-size: 14px; /* Tamanho da fonte para combinar com o texto ao redor */
     transition: background-color 0.3s ease; /* Transição suave para o hover */
     display: flex; /* Para alinhar o ícone e o texto */
+    justify-content: center;
     align-items: center; /* Alinha verticalmente o ícone e o texto */
     gap: 5px; /* Espaçamento entre o ícone e o texto */
-    margin-bottom: 15px; /* Espaçamento abaixo do botão */
+    margin-bottom: 10px; /* Espaçamento abaixo do botão */
 }
 
 #limparFiltros:hover {
