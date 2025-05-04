@@ -202,3 +202,22 @@ a {
   font-size: 16px;
   width: 30%;
 }
+
+#limparFiltros {
+    background-color: #f0f0f0; /* Um cinza claro para o fundo do botão */
+    color: #343a40; /* Um tom de cinza escuro para o texto, similar aos outros elementos */
+    border: 1px solid #ced4da; /* Uma borda sutil, similar aos inputs */
+    padding: 8px 15px; /* Espaçamento interno para o texto e ícone */
+    border-radius: 5px; /* Bordas arredondadas para um visual mais suave */
+    cursor: pointer; /* Indica que é um elemento clicável */
+    font-size: 14px; /* Tamanho da fonte para combinar com o texto ao redor */
+    transition: background-color 0.3s ease; /* Transição suave para o hover */
+    display: flex; /* Para alinhar o ícone e o texto */
+    align-items: center; /* Alinha verticalmente o ícone e o texto */
+    gap: 5px; /* Espaçamento entre o ícone e o texto */
+    margin-bottom: 15px; /* Espaçamento abaixo do botão */
+}
+
+#limparFiltros:hover {
+    background-color: #e0e0e0; /* Um tom mais claro no hover */
+}

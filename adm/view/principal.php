@@ -3,6 +3,7 @@
 </div>
 <div id="main">
     <div id="info_PI">
+        <button id="limparFiltros">Limpar Filtros</button>
         <h3>Cursos</h3>
         <div class="card-container">
             <?php foreach (Cursos::consultarNomeCursos() as $curso): ?>
@@ -99,4 +100,5 @@ function carregarPI() {
     });
 }
 </script>
+<script src="../assets/javascript/limparFiltros.js"></script>
 </html>
