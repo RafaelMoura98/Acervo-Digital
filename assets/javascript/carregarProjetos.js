@@ -40,12 +40,21 @@ function carregarPI() {
                     data.busca.forEach(projeto => {
                         outputHTML += `
                             <div class="card-container">
-                                <div class="card">
-                                    <h3>${projeto.titulo}</h3>
+                                <div class="card" data-post-id="${projeto.id}">
+                                    <div class="card-header">
+                                        <h3>${projeto.titulo}</h3>
+                                        <div class="card-header-right">
+                                            <h4>Curtidas:</h4>
+                                            <span class="contador-likes" id="likes-projeto-${projeto.id}">${projeto.like_pi}</span>
+                                        </div>
+                                    </div>
                                     <p>${projeto.resumo}</p>
-                                    <p>Curso: ${projeto.curso}</p>
+                                    <p>Curso: ${projeto.nome_curso}</p>
                                     <p>Ano de publicação: ${projeto.ano}</p>
                                     <div class="card-footer">
+                                        <button class="botao-like">
+                                            <i class="fa fa-heart"></i><span>CURTIR</span>
+                                        </button>
                                         <button class="btn">BAIXAR</button>
                                         <button class="btn">VER ONLINE</button>
                                     </div>
@@ -63,12 +72,21 @@ function carregarPI() {
                     data.filtrados.forEach(projeto => {
                         outputHTML += `
                             <div class="card-container">
-                                <div class="card">
-                                    <h3>${projeto.titulo}</h3>
+                                <div class="card" data-post-id="${projeto.id}">
+                                    <div class="card-header">
+                                        <h3>${projeto.titulo}</h3>
+                                        <div class="card-header-right">
+                                            <h4>Curtidas:</h4>
+                                            <span class="contador-likes" id="likes-projeto-${projeto.id}">${projeto.like_pi}</span>
+                                        </div>
+                                    </div>
                                     <p>${projeto.resumo}</p>
-                                    <p>Curso: ${projeto.curso}</p>
+                                    <p>Curso: ${projeto.nome_curso}</p>
                                     <p>Ano de publicação: ${projeto.ano}</p>
                                     <div class="card-footer">
+                                        <button class="botao-like">
+                                            <span>CURTIR</span>
+                                        </button>
                                         <button class="btn">BAIXAR</button>
                                         <button class="btn">VER ONLINE</button>
                                     </div>
@@ -85,12 +103,21 @@ function carregarPI() {
                     data.ultimos.forEach(projeto => {
                         outputHTML += `
                             <div class="card-container">
-                                <div class="card">
-                                    <h3>${projeto.titulo}</h3>
+                                <div class="card" data-post-id="${projeto.id}">
+                                    <div class="card-header">
+                                        <h3>${projeto.titulo}</h3>
+                                        <div class="card-header-right">
+                                            <h5>Curtidas:</h5>
+                                            <span class="contador-likes" id="likes-projeto-${projeto.id}">${projeto.like_pi}</span>
+                                        </div>
+                                    </div>
                                     <p>${projeto.resumo}</p>
-                                    <p>Curso: ${projeto.curso}</p>
+                                    <p>Curso: ${projeto.nome_curso}</p>
                                     <p>Ano de publicação: ${projeto.ano}</p>
                                     <div class="card-footer">
+                                        <button class="botao-like">
+                                            <span>CURTIR</span>
+                                        </button>
                                         <button class="btn">BAIXAR</button>
                                         <button class="btn">VER ONLINE</button>
                                     </div>
@@ -107,12 +134,21 @@ function carregarPI() {
                     data.curtidos.forEach(projeto => {
                         outputHTML += `
                             <div class="card-container">
-                                <div class="card">
-                                    <h3>${projeto.titulo}</h3>
+                                <div class="card" data-post-id="${projeto.id}">
+                                    <div class="card-header">
+                                        <h3>${projeto.titulo}</h3>
+                                        <div class="card-header-right">
+                                            <h5>Curtidas:</h5>
+                                            <span class="contador-likes" id="likes-projeto-${projeto.id}">${projeto.like_pi}</span>
+                                        </div>
+                                    </div>
                                     <p>${projeto.resumo}</p>
-                                    <p>Curso: ${projeto.curso}</p>
+                                    <p>Curso: ${projeto.nome_curso}</p>
                                     <p>Ano de publicação: ${projeto.ano}</p>
                                     <div class="card-footer">
+                                        <button class="botao-like">
+                                            <i class="fa fa-heart"></i><span>CURTIR</span>
+                                        </button>
                                         <button class="btn">BAIXAR</button>
                                         <button class="btn">VER ONLINE</button>
                                     </div>
@@ -126,6 +162,36 @@ function carregarPI() {
             } 
 
             contentDiv.html(outputHTML);
+
+            // Adiciona o evento de clique para os botões de curtir
+            $('.botao-like').on('click', function() { 
+                const $botaoLike = $(this); 
+                const $itemPost = $botaoLike.closest('.card'); 
+                const postId = $itemPost.data('post-id'); 
+                const $contadorLikes = $itemPost.find('.contador-likes'); 
+ 
+                $.ajax({ 
+                    url: './controller/projetosController.php', // Agora esta requisição é para dar o like 
+                    method: 'POST', 
+                    data: { action: 'like', post_id: postId }, // Adicionamos uma 'action' para o controller saber o que fazer 
+                    dataType: 'json', 
+                    success: function(response) { 
+                        if (response.success) { 
+                            
+                            $contadorLikes.text(response.new_like_count); 
+                            $botaoLike.addClass('liked'); 
+                            // $botaoLike.find('span').text('Curtido'); 
+                        } else { 
+                            alert('Erro ao dar like.'); 
+                            console.error(response.error); 
+                        } 
+                    }, 
+                    error: function(xhr, status, error) { 
+                        console.error("Erro na requisição AJAX (like):", status, error); 
+                        alert('Erro de comunicação com o servidor ao dar like.'); 
+                    } 
+                }); 
+            }); 
         },
         error: function (xhr, status, error) {
             console.error("Erro na requisição:", error);

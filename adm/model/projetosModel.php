@@ -10,7 +10,7 @@ class Projetos
         public static function consultarProjetos($curso, $ano)
     {
         $pdo = Database::conexao();
-        $sql = "SELECT pi.*, c.id, c.curso
+        $sql = "SELECT pi.*, c.id AS curso_id, c.curso AS nome_curso
                 FROM pi_bd pi
                 JOIN curso_bd c ON pi.curso = c.id
                 WHERE 1=1";
@@ -46,7 +46,7 @@ class Projetos
     {
         $pdo = Database::conexao();
         
-        $sql = "SELECT pi.*, c.id, c.curso
+        $sql = "SELECT pi.*, c.id AS curso_id, c.curso AS nome_curso
                 FROM pi_bd pi
                 JOIN curso_bd c ON pi.curso = c.id 
                 WHERE titulo LIKE :termo OR resumo LIKE :termo LIMIT 5" ;
@@ -87,5 +87,32 @@ class Projetos
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function adicionarLike($postId) 
+    { 
+        $pdo = Database::conexao();
+        $sql = "UPDATE pi_bd 
+                SET like_pi = like_pi + 1 
+                WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':id', $postId, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    } 
+
+    public static function obterNumeroLikes($postId) 
+    { 
+        $pdo = Database::conexao();
+        $sql = "SELECT like_pi 
+                FROM pi_bd 
+                WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':id', $postId, PDO::PARAM_INT); 
+        $stmt->execute(); 
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC); 
+
+        return $resultado ? $resultado['like_pi'] : 0; 
+    } 
+    
 
 }

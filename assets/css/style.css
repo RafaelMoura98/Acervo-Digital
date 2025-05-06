@@ -228,3 +228,31 @@ a {
 #limparFiltros:hover {
     background-color: #e0e0e0; /* Um tom mais claro no hover */
 }
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.botao-like{
+    background-color: #0C2856;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.card-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-header-right span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #666666;
+}
