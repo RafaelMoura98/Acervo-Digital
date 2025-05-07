@@ -31,6 +31,18 @@ class Projetos
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+        public static function consultarProjetoPorId($id)
+    {
+        $pdo = Database::conexao();
+        $sql = "SELECT pi.id, pi.nome_pdf
+                FROM pi_bd pi
+                WHERE pi.id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
 
     public static function consultarAnosPubliProjetos()
     {   
