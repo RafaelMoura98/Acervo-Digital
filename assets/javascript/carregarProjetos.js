@@ -55,8 +55,8 @@
                                             <button class="botao-like">
                                                 <i class="fa fa-heart"></i><span>CURTIR</span>
                                             </button>
-                                            <button class="btn">BAIXAR</button>
-                                            <button class="btn">VER ONLINE</button>
+                                            <button class="btn" onclick="baixarArquivoPorId(${projeto.id})">BAIXAR</button>
+                                            <button class="btn" onclick="visualizarArquivoPorId(${projeto.id})">VER ONLINE</button>
                                         </div>
                                     </div>
                                 </div>
@@ -87,8 +87,8 @@
                                             <button class="botao-like">
                                                 <span>CURTIR</span>
                                             </button>
-                                            <button class="btn">BAIXAR</button>
-                                            <button class="btn">VER ONLINE</button>
+                                            <button class="btn" onclick="baixarArquivoPorId(${projeto.id})">BAIXAR</button>
+                                            <button class="btn" onclick="visualizarArquivoPorId(${projeto.id})">VER ONLINE</button>
                                         </div>
                                     </div>
                                 </div>
@@ -149,8 +149,8 @@
                                             <button class="botao-like">
                                                 <i class="fa fa-heart"></i><span>CURTIR</span>
                                             </button>
-                                            <button class="btn">BAIXAR</button>
-                                            <button class="btn">VER ONLINE</button>
+                                            <button class="btn" onclick="baixarArquivoPorId(${projeto.id})">BAIXAR</button>
+                                            <button class="btn" onclick="visualizarArquivoPorId(${projeto.id})">VER ONLINE</button>
                                         </div>
                                     </div>
                                 </div>
