@@ -34,6 +34,11 @@ include_once($caminhoBaseConfig."configuracao.php");
         <img src="<?= $caminhoBaseAssets.'/imagens/logo.png'?>" id="img_logo">
             <div id="menu">
             <h2 class="fontWhite">Acervo Digital</h2>
+                <?php if ($paginaUrl === "principal"):?>
+                    <div class="container-search">
+                        <input  type="text" class="search-bar" id="searchInput" placeholder="Buscar por título ou resumo...">
+                    </div>  
+                <?php endif;?>
                 <div id="menu_button">
                     <ul class="navbar-links">
                         <li><a href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'principal'?>">Home</a></li>

@@ -58,9 +58,11 @@ a {
 
 #menu{
     display: flex;
-    gap: 40px;
+    align-items: center;
+    gap: 12px;
     width: 100%;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 #menu_button{
@@ -181,19 +183,31 @@ a {
 }
 
 .container-search {
-  display: flex;
-  justify-content: center;
-  align-items: center;  
-  margin: 10px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px; /* largura máxima */
 }
 
 .search-bar {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  font-size: 16px;
-  width: 30%;
+    width: 100%;
+    padding: 10px 20px;
+    border: 2px solid #0c2d5e;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #0c2d5e;
+    background-color: #f2f6ff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
 }
+
+.search-bar:focus {
+    outline: none;
+    border-color: #0a1f40;
+    box-shadow: 0 0 10px rgba(12, 45, 94, 0.4);
+    background-color: #ffffff;
+  }
 
 #limparFiltros {
     background-color: #f0f0f0; /* Um cinza claro para o fundo do botão */
@@ -243,15 +257,15 @@ a {
     color: #666666;
 }
 
-  .navbar-links {
+.navbar-links {
     list-style: none; /* Remove os marcadores de lista */
     padding: 0;
     margin: 0;
     display: flex; /* Alinha os links horizontalmente */
     gap: 20px; /* Espaço entre os links */
-  }
+}
   
-  .navbar-links li a {
+.navbar-links li a {
     text-decoration: none;
     color: white; /* Cor dos links padrão */
     font-size: 16px;
@@ -260,6 +274,6 @@ a {
     transition: color 0.3s ease; /* Transição suave apenas para a cor do texto */
   }
   
-  .navbar-links li a:hover {
+.navbar-links li a:hover {
     color: #777; /* Tom de cinza mais claro ao passar o mouse */
   }

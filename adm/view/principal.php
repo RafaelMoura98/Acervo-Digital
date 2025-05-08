@@ -1,6 +1,3 @@
-<div class="container-search">
-    <input  type="text" class="search-bar" id="searchInput" placeholder="Buscar por título ou resumo...">
-</div>
 <div id="main">
     <div id="info_PI">
         <button id="limparFiltros">Limpar Filtros</button>
