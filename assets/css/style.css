@@ -8,12 +8,13 @@ body {
 
 header{
     background-color: #0C2856;
+    padding: 5px 10px;
 }
 
 input[type="radio"] {
     margin: 0;
     padding: 0;
-    transform: translateY(-4px); /* Ajuste fino na posição vertical */
+    transform: translateY(-1px); /* Ajuste fino na posição vertical */
 }
 
 label {
@@ -52,7 +53,7 @@ a {
 
 #nav{
     display: flex;
-    gap: 40px;
+    gap: 15px;
 }
 
 #menu{
@@ -70,7 +71,8 @@ a {
 }
 
 #img_logo{
-    width: 128px;
+    max-height: 50px; /* Ajuste a altura da logo */
+    margin-right: 20px;
 }
 
 #info_PI{
@@ -97,22 +99,6 @@ a {
     gap: 5px;
 }
 
-.button_menu {
-    background-color: #ddd;
-    border-radius: 300px;
-    padding: 20px 20px;
-    height: 60px;
-    width: 105px;
-    border: none;
-    color: #0C2856;
-    cursor: pointer;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    white-space: normal;
-    word-break: break-word;
-  }
 
 /* Container dos cards */
 .card-container {
@@ -256,3 +242,24 @@ a {
     font-weight: bold;
     color: #666666;
 }
+
+  .navbar-links {
+    list-style: none; /* Remove os marcadores de lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Alinha os links horizontalmente */
+    gap: 20px; /* Espaço entre os links */
+  }
+  
+  .navbar-links li a {
+    text-decoration: none;
+    color: white; /* Cor dos links padrão */
+    font-size: 16px;
+    padding: 8px 12px; /* Mantém o padding para espaçamento */
+    border-radius: 5px; /* Mantém as bordas arredondadas (se desejar) */
+    transition: color 0.3s ease; /* Transição suave apenas para a cor do texto */
+  }
+  
+  .navbar-links li a:hover {
+    color: #777; /* Tom de cinza mais claro ao passar o mouse */
+  }

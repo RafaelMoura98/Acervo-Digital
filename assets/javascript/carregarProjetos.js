@@ -1,15 +1,43 @@
-    $(document).ready(function () {
-        let timeout;
-        
-        $("#searchInput").on("input", function() {
-            clearTimeout(timeout);
-            timeout = setTimeout(carregarPI, 400);
-        });
-
-        $("input[name='curso'], input[name='ano']").change(carregarPI);
-
-        carregarPI();    
+$(document).ready(function () {
+    let timeout;
+  
+    $("#searchInput").on("input", function() {
+      clearTimeout(timeout);
+      timeout = setTimeout(carregarPI, 400);
     });
+  
+    function setupRadioToggleWithFetch(radioGroup) {
+      let previouslyChecked = null;
+  
+      radioGroup.forEach(radio => {
+        radio.addEventListener('click', function() {
+          if (this === previouslyChecked) {
+            radioGroup.forEach(r => {
+              r.checked = false;
+            });
+            previouslyChecked = null;
+          } else {
+            previouslyChecked = this;
+            radioGroup.forEach(r => {
+              if (r !== this) {
+                r.checked = false; // Desmarca outros botões do grupo
+              }
+            });
+          }
+          carregarPI(); // Chama carregarPI após a lógica de toggle
+        });
+      });
+    }
+  
+    const radio_curso = document.querySelectorAll('input[type="radio"][name="curso"]');
+    const radio_ano = document.querySelectorAll('input[type="radio"][name="ano"]');
+  
+    setupRadioToggleWithFetch(radio_curso);
+    setupRadioToggleWithFetch(radio_ano);
+  
+    carregarPI();
+  });
+  
 
     function carregarPI() {
         

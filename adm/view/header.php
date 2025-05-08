@@ -35,10 +35,12 @@ include_once($caminhoBaseConfig."configuracao.php");
             <div id="menu">
             <h2 class="fontWhite">Acervo Digital</h2>
                 <div id="menu_button">
-                    <a href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'principal'?>"><button class="button_menu">Home</button></a>
-                    <a href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'cadastrarPI'?>"><button class="button_menu">Cadastrar Projeto</button></a>
-                    <a href="<?= constant('URL_LOCAL_SITE_PAGINA').'adm'?>"><button class="button_menu">Login</button></a>
-                    <a href="#"><button class="button_menu">Sair</button></a>
+                    <ul class="navbar-links">
+                        <li><a href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'principal'?>">Home</a></li>
+                        <li><a href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'cadastrarPI'?>">Cadastrar Projeto</a></li>
+                        <li><a href="<?= constant('URL_LOCAL_SITE_PAGINA').'adm'?>">Login</a></li>
+                        <li><a href="#">Sair</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
