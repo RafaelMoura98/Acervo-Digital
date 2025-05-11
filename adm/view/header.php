@@ -41,7 +41,7 @@ include_once($caminhoBaseConfig."configuracao.php");
                         <li><a href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'principal'?>">Home</a></li>
                         <li><a href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'cadastrarPI'?>">Cadastrar Projeto</a></li>
                         <li><a href="<?= constant('URL_LOCAL_SITE_PAGINA').'adm'?>">Login</a></li>
-                        <li><a href="#">Sair</a></li>
+                        <li><a href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'sair'?>">Sair</a></li>
                     </ul>
                 </div>
             </div>
