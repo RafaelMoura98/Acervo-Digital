@@ -11,15 +11,25 @@ $login = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['login'])) ? $_P
 @$senha = ($_SERVER["REQUEST_METHOD"] == "POST" && !empty(Usuario::criptografia($_POST['senha']))) ? Usuario::criptografia($_POST['senha']) : null;
 $usuarioCadastrado = Usuario::consultarLogin($login);
 
-if($usuarioCadastrado && Acesso::validarSenha($senha, $usuarioCadastrado['senha'])){
-  Acesso::registrarAcessoValido($usuarioCadastrado);
-  if (isset($_SESSION["usuario"]["status"]) && $_SESSION["usuario"]["status"] === 'logado'){
+
+if (isset($usuarioCadastrado["login"]) && $usuarioCadastrado["login"] === $login) {
+    $senhaValida = Acesso::validarSenha($senha, $usuarioCadastrado["senha"]);
+
+    if ($senhaValida === true) {
+        Acesso::registrarAcessoValido($usuarioCadastrado);
+        header("Location: " . constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI"));
+        exit; // Interrompe o script após o redirecionamento
+    } else {
+        echo "<script>
+            alert('Senha incorreta!');
+            </script>";
+        exit;
+    }
+} elseif ($login != null) {
     echo "<script>
-        alert('Login realizado com sucesso!');
-        window.location.href = '".constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI")."';
+        alert('Usuário incorreto!');
         </script>";
-    exit; // Interrompe o script após o redirecionamento
-  }
+    exit;
 }
 
 

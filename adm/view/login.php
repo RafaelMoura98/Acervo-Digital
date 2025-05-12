@@ -4,10 +4,10 @@
             <h1><b>Faça o Login</b></h1><br>
             <img src="./assets//imagens/img_login.png" alt="Imagem de Login" class="img-login">
             <div class="input-box">
-                <input name="login" id="login" type="text" placeholder="Login">
+                <input name="login" id="login" type="text" placeholder="Login" required>
             </div>
             <div class="input-box">
-                <input name="senha" id="senha" type="password" placeholder="Senha">
+                <input name="senha" id="senha" type="password" placeholder="Senha" required>
             </div>
             <button type="submit" class="btnEnviar">Entrar</button>
         </form>

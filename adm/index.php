@@ -25,6 +25,7 @@ include_once("view/header.php");
 if ($paginaUrl === "adm") {
     include_once("model/acessoModel.php");
     include_once("model/usuarioModel.php");
+    include_once("view/login.php");
     include_once("controller/usuarioController.php");
 
     // Verifica se o usuário já está logado
@@ -35,8 +36,6 @@ if ($paginaUrl === "adm") {
         </script>";
         exit;
     }
-
-    include_once("view/login.php");
 
 }elseif ($paginaUrl === "principal")  {
     include_once("model/cursosModel.php");

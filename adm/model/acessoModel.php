@@ -18,6 +18,7 @@ class Acesso
 
     public static function registrarAcessoValido($usuarioCadastrado){
         $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
+        $_SESSION["usuario"]["login"] = $usuarioCadastrado['login'];
         $_SESSION["usuario"]["id"] = $usuarioCadastrado['id'];
         $_SESSION["usuario"]["status"] = 'logado';
     }
