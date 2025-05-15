@@ -1,7 +1,3 @@
-<?php
-include_once("view/header.php");
-?>
-
 <section>
     <div class="registro-container">
         <form class="form" method="POST" action="#">
@@ -18,7 +14,7 @@ include_once("view/header.php");
             <div class="input-box">
                 <select name="curso" class="curso">
                     <option value="Administração">Administração</option>
-                    <option value="Logistíca">Logistíca</option>
+                    <option value="Logística">Logística</option>
                     <option value="Desenvolvimento de sistemas">Desenvolvimento de sistemas</option>
                 </select>
             </div>
