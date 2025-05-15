@@ -34,5 +34,7 @@ if ($paginaUrl === "adm") {
     include_once("view/recuperacao.php");
 }elseif ($paginaUrl === "cadastrarPI") {
     include_once("view/cadastrarPI.php");
+    include_once("model/cadastrarPIModel.php");
+    include_once("controller/cadastrarPIController.php");
 }
 
