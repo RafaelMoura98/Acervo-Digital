@@ -48,7 +48,8 @@ if ($paginaUrl === "adm") {
 }elseif ($paginaUrl === "cadastrarPI") {
     include_once("model/acessoModel.php");
     Acesso::protegerTela();
-    include_once("model/acessoModel.php");
+    include_once("model/projetosModel.php");
+    include_once("controller/projetosController.php");
     include_once("view/cadastrarPI.php");
 }elseif ($paginaUrl === "sair"){
     include_once("model/acessoModel.php");

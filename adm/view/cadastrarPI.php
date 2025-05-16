@@ -1,10 +1,12 @@
+<?php require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/cursosModel.php'; ?>
+
 <section>
     <div class="registro-container">
-        <form class="form" method="POST" action="#">
+        <form class="form" method="POST" action="#" enctype="multipart/form-data">
             <h1><b>Cadastro Projeto Integrador</b></h1>
             <div class="input-box">
                 <label for="itext"></label><br>
-                <input name="titulo" id="itext" type="text" placeholder="Título">
+                <input name="titulo" id="titulo" type="text" placeholder="Título">
             </div>
             <br>
             <div class="input-box">
@@ -13,18 +15,18 @@
             <br>
             <div class="input-box">
                 <select name="curso" class="curso">
-                    <option value="Administração">Administração</option>
-                    <option value="Logística">Logística</option>
-                    <option value="Desenvolvimento de sistemas">Desenvolvimento de sistemas</option>
+                    <?php foreach (Cursos::consultarNomeCursos() as $info_curso): ?>
+                        <option value="<?= $info_curso["id"]?>"><?= $info_curso["curso"] ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <div class="input-box">
                 <label for="itext"></label><br>
-                <input name="ano" id="itext" type="text" placeholder="Ano de publicação">
+                <input name="ano" id="ano" type="text" placeholder="Ano de publicação">
             </div>
             <div class="input-box">
                 <label for="itext"></label><br>
-                <input name="arquivo" id="fileToUpload" type="file">
+                <input name="arquivo" id="arquivo" type="file">
             </div>
             <br>
             <button type="submit" class="btnEnviar">Enviar</button>
