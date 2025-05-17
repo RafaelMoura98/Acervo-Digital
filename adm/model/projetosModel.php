@@ -128,6 +128,7 @@ class Projetos
     
     public static function cadastrarPI($titulo, $resumo, $curso, $ano, $arquivo)
     {
+        if(!$titulo || !$resumo || !$curso || !$ano || !$arquivo){return;}
         $pdo = Database::conexao();
         $sql = "INSERT INTO pi_bd (titulo, resumo, curso, ano, nome_pdf) VALUES (:titulo, :resumo, :curso, :ano, :nome_pdf)";
         $stmt = $pdo->prepare($sql);
@@ -136,6 +137,7 @@ class Projetos
         $stmt->bindValue(':curso', $curso);
         $stmt->bindValue(':ano', $ano);
         $stmt->bindValue(':nome_pdf', $arquivo);
-        return $stmt->execute();
+        $result = $stmt->execute();
+        return ($result)?true:false;
     }
 }

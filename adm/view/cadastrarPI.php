@@ -1,32 +1,42 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/cursosModel.php'; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/cursosModel.php'; 
+
+
+$dados_antigos = $_SESSION['form_data'] ?? [];
+unset($_SESSION['form_data']); // limpar para não manter depois
+
+?>
+
+
 
 <section>
     <div class="registro-container">
-        <form class="form" method="POST" action="#" enctype="multipart/form-data">
+        <form id="formCadastroPI" class="form" method="POST" action="./controller/processaCadastroPI.php" enctype="multipart/form-data">
             <h1><b>Cadastro Projeto Integrador</b></h1>
             <div class="input-box">
                 <label for="itext"></label><br>
-                <input name="titulo" id="titulo" type="text" placeholder="Título">
+                <input name="nome_titulo" id="nome_titulo" type="text" placeholder="Título" value="<?= htmlspecialchars($dados_antigos['titulo'] ?? '') ?>">
             </div>
             <br>
             <div class="input-box">
-                <textarea name="resumo" placeholder="Resumo"></textarea>
+                <textarea name="resumo" placeholder="Resumo"><?= htmlspecialchars($dados_antigos['resumo'] ?? '') ?></textarea>
             </div>
             <br>
             <div class="input-box">
-                <select name="curso" class="curso">
+                <select name="id_curso" class="curso">
                     <?php foreach (Cursos::consultarNomeCursos() as $info_curso): ?>
-                        <option value="<?= $info_curso["id"]?>"><?= $info_curso["curso"] ?></option>
+                        <option value="<?= $info_curso["id"] ?>"
+                            <?= (isset($dados_antigos['curso']) && $dados_antigos['curso'] == $info_curso["id"]) ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($info_curso["curso"]) ?>
+                        </option>
                     <?php endforeach ?>
                 </select>
             </div>
             <div class="input-box">
                 <label for="itext"></label><br>
-                <input name="ano" id="ano" type="text" placeholder="Ano de publicação">
+                <input name="ano_publicacao" id="ano_publicacao" type="text" placeholder="Ano de publicação" value="<?= htmlspecialchars($dados_antigos['ano'] ?? '') ?>">
             </div>
             <div class="input-box">
-                <label for="itext"></label><br>
-                <input name="arquivo" id="arquivo" type="file">
+                <input name="fileToUpload" id="fileToUpload" type="file">
             </div>
             <br>
             <button type="submit" class="btnEnviar">Enviar</button>

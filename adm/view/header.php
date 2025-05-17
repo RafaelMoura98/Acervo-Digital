@@ -19,8 +19,7 @@ include_once($caminhoBaseConfig."configuracao.php");
     <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/style.css'?>">
     <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/recuperacao.css'?>">
 <?php endif;?> 
-    
-    <link rel="shortcut icon" href="<?= $caminhoBaseAssets.'/imagens/logo.png'?>" type="image/x-icon">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');</style>
 
