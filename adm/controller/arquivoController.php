@@ -23,6 +23,7 @@ if (!$projeto) {
 }
 
 $arquivo = $projeto['nome_pdf'];
+$nome_arquivo = $projeto['titulo'];
 $caminho = realpath(__DIR__ . '/../../assets/uploads/' . basename($arquivo));
 
 if (!$caminho || !file_exists($caminho)) {
@@ -34,10 +35,14 @@ if (!$caminho || !file_exists($caminho)) {
 $mime = mime_content_type($caminho);
 header('Content-Type: ' . $mime);
 
+
+$nome_formatado = $nome_arquivo;
+$nome_formatado .= '.pdf';
+
 if ($modo === 'download') {
-    header('Content-Disposition: attachment; filename="' . basename($arquivo) . '"');
+    header('Content-Disposition: attachment; filename="' . $nome_formatado . '"');
 } else {
-    header('Content-Disposition: inline; filename="' . basename($arquivo) . '"');
+    header('Content-Disposition: inline; filename="' . $nome_formatado . '"');
 }
 
 header('Content-Length: ' . filesize($caminho));

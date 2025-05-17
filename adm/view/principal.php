@@ -29,5 +29,7 @@
 <script src="../assets/javascript/carregarProjetos.js"></script>
 <script src="../assets/javascript/limparFiltros.js"></script>
 <script src="../assets/javascript/arquivo.js"></script>
-<script src="../assets/javascript/formCadastroPI.js"></script>
+<?php if ($paginaUrl === 'cadastrarPI') : ?>
+    <script src="../assets/javascript/formCadastroPI.js"></script>
+<?php endif; ?>
 </html>

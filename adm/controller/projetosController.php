@@ -53,6 +53,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Retorna os projetos em JSON
     
 }

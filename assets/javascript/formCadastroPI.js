@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('formCadastroPI');
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  form.addEventListener('submit', async (e) => {e.preventDefault();
 
     const formData = new FormData(form);
 

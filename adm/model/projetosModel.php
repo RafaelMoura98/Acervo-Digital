@@ -26,6 +26,7 @@ class Projetos
             $params[':ano'] = $ano;
         }
 
+        $sql .= " ORDER BY pi.titulo ASC";
         $stmt = $pdo->prepare($sql);
         $stmt->execute($params);  // Passando os parâmetros para a execução
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -34,7 +35,7 @@ class Projetos
         public static function consultarProjetoPorId($id)
     {
         $pdo = Database::conexao();
-        $sql = "SELECT pi.id, pi.nome_pdf
+        $sql = "SELECT pi.id, pi.titulo, pi.nome_pdf
                 FROM pi_bd pi
                 WHERE pi.id = :id";
         $stmt = $pdo->prepare($sql);
@@ -140,4 +141,43 @@ class Projetos
         $result = $stmt->execute();
         return ($result)?true:false;
     }
+
+
+    public static function uploadArquivoComHash($titulo, $arquivoUpload)
+    {
+    
+            if (!isset($arquivoUpload) || $arquivoUpload['error'] !== UPLOAD_ERR_OK) {
+                return false;
+            }
+
+            $extensao = strtolower(pathinfo($arquivoUpload['name'], PATHINFO_EXTENSION));
+            $tamanho = $arquivoUpload['size'];
+            $tmpName = $arquivoUpload['tmp_name'];
+
+            // Validações
+            if ($extensao !== 'pdf') {
+                return 'erro_tipo';
+            }
+
+            if ($tamanho > 5 * 1024 * 1024) {
+                return 'erro_tamanho';
+            }
+
+            // Nome com hash do título
+            $nomeHash = hash('sha256', $titulo);
+            $nomeFinal = $nomeHash . '.pdf';
+            $destino = $_SERVER['DOCUMENT_ROOT'] . '/Acervo-Digital/assets/uploads/' . $nomeFinal;
+
+            if (file_exists($destino)) {
+                return 'arquivo_ja_existe';
+            }
+
+            if (move_uploaded_file($tmpName, $destino)) {
+                return $nomeFinal;
+            }
+
+            return false;
+        }
+
+
 }
