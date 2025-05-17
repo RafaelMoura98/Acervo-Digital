@@ -280,3 +280,7 @@ a {
 .navbar-links li a:hover {
     color: #777; /* Tom de cinza mais claro ao passar o mouse */
   }
+
+.resumo_justificado{
+    text-align: justify;
+}
