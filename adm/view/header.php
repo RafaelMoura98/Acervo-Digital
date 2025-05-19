@@ -12,18 +12,14 @@ include_once($caminhoBaseConfig."configuracao.php");
 
 <?php if ($paginaUrl === "principal"):?>
     <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/style.css'?>">
-<?php elseif ($paginaUrl === "cadastrarPI"):?>
+<?php elseif ($paginaUrl === "cadastrarPI" || $paginaUrl === "adm"):?>
     <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/style.css'?>">
     <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/cadastrarPI.css'?>">
-<?php elseif ($paginaUrl === "adm"):?>
-    <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/style.css'?>">
-    <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/login.css'?>">
 <?php elseif ($paginaUrl === "recuperacao"):?>
     <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/style.css'?>">
     <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/recuperacao.css'?>">
 <?php endif;?> 
-    
-    <link rel="shortcut icon" href="<?= $caminhoBaseAssets.'/imagens/logo.png'?>" type="image/x-icon">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');</style>
 
@@ -44,7 +40,7 @@ include_once($caminhoBaseConfig."configuracao.php");
                         <li><a href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'principal'?>">Home</a></li>
                         <li><a href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'cadastrarPI'?>">Cadastrar Projeto</a></li>
                         <li><a href="<?= constant('URL_LOCAL_SITE_PAGINA').'adm'?>">Login</a></li>
-                        <li><a href="#">Sair</a></li>
+                        <li><a href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM').'sair'?>">Sair</a></li>
                     </ul>
                 </div>
             </div>

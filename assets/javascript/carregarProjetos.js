@@ -76,7 +76,7 @@ $(document).ready(function () {
                                                 <span class="contador-likes" id="likes-projeto-${projeto.id}">${projeto.like_pi}</span>
                                             </div>
                                         </div>
-                                        <p>${projeto.resumo}</p>
+                                        <p class= "resumo_justificado">${projeto.resumo}</p>
                                         <p>Curso: ${projeto.nome_curso}</p>
                                         <p>Ano de publicação: ${projeto.ano}</p>
                                         <div class="card-footer">
@@ -108,7 +108,7 @@ $(document).ready(function () {
                                                 <span class="contador-likes" id="likes-projeto-${projeto.id}">${projeto.like_pi}</span>
                                             </div>
                                         </div>
-                                        <p>${projeto.resumo}</p>
+                                        <p class= "resumo_justificado">${projeto.resumo}</p>
                                         <p>Curso: ${projeto.nome_curso}</p>
                                         <p>Ano de publicação: ${projeto.ano}</p>
                                         <div class="card-footer">
@@ -139,7 +139,7 @@ $(document).ready(function () {
                                                 <span class="contador-likes" id="likes-projeto-${projeto.id}">${projeto.like_pi}</span>
                                             </div>
                                         </div>
-                                        <p>${projeto.resumo}</p>
+                                        <p class= "resumo_justificado">${projeto.resumo}</p>
                                         <p>Curso: ${projeto.nome_curso}</p>
                                         <p>Ano de publicação: ${projeto.ano}</p>
                                         <div class="card-footer">
@@ -170,7 +170,7 @@ $(document).ready(function () {
                                                 <span class="contador-likes" id="likes-projeto-${projeto.id}">${projeto.like_pi}</span>
                                             </div>
                                         </div>
-                                        <p>${projeto.resumo}</p>
+                                        <p class= "resumo_justificado">${projeto.resumo}</p>
                                         <p>Curso: ${projeto.nome_curso}</p>
                                         <p>Ano de publicação: ${projeto.ano}</p>
                                         <div class="card-footer">

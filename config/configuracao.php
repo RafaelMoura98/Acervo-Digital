@@ -24,7 +24,9 @@ switch ('localhost') {
 define("URL_LOCAL_BASE",$enviroment['local']);
 define("URL_LOCAL_SITE",constant("URL_LOCAL_BASE")."Acervo-Digital");
 define("URL_LOCAL_SITE_PAGINA",constant("URL_LOCAL_SITE")."?pagina=");
+define("URL_LOCAL_SITE_PAGINA_LOGIN",constant("URL_LOCAL_SITE_PAGINA")."adm");
 define("URL_LOCAL_SITE_PAGINA_ADM",constant("URL_LOCAL_SITE")."/adm/?pagina=");
+define("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI",constant("URL_LOCAL_SITE_PAGINA_ADM")."cadastrarPI");
 
 
 ?>
