@@ -25,11 +25,15 @@
         </div>
     </div>
 </div>
-</body>
+<script>
+     const URL_CONTROLLER_PROJETOS = "<?php echo URL_ADM_CONTROLLER_PROJETOS; ?>";
+    const URL_CONTROLLER_ARQUIVOS = "<?php echo URL_ADM_CONTROLLER_ARQUIVOS; ?>";
+</script>
 <script src="../assets/javascript/carregarProjetos.js"></script>
 <script src="../assets/javascript/limparFiltros.js"></script>
 <script src="../assets/javascript/arquivo.js"></script>
 <?php if ($paginaUrl === 'cadastrarPI') : ?>
     <script src="../assets/javascript/formCadastroPI.js"></script>
 <?php endif; ?>
+</body>
 </html>

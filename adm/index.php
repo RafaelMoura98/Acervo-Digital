@@ -38,6 +38,7 @@ if ($paginaUrl === "adm") {
     }
 
 }elseif ($paginaUrl === "principal")  {
+    define('URL_CONTROLLER', 'URL_ADM_CONTROLLER_PROJETOS');
     include_once("model/cursosModel.php");
     include_once("model/projetosModel.php");
     include_once("controller/cursosController.php");
