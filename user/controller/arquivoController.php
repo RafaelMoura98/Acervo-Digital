@@ -1,6 +1,8 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/projetosModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/user/model/projetosModel.php';
+
+
 
 $id = $_GET['id'] ?? null;
 $modo = $_GET['modo'] ?? '';

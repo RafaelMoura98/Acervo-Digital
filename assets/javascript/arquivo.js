@@ -1,7 +1,7 @@
 function visualizarArquivoPorId(id) {
-    window.open('controller/arquivoController.php?modo=visualizar&id=' + id, '_blank');
+    window.open( URL_CONTROLLER_ARQUIVOS + '?modo=visualizar&id=' + id, '_blank');
 }
 function baixarArquivoPorId(id){
-    window.location.href = 'controller/arquivoController.php?modo=download&id=' + id;
+    window.location.href = URL_CONTROLLER_ARQUIVOS + '?modo=download&id=' + id;
 }
 

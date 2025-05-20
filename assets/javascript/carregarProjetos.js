@@ -1,3 +1,4 @@
+console.log(">>", URL_CONTROLLER_PROJETOS);
 $(document).ready(function () {
     let timeout;
   
@@ -48,7 +49,7 @@ $(document).ready(function () {
         
         // Faz a requisição AJAX
         $.ajax({
-            url: "./controller/projetosController.php",
+            url: URL_CONTROLLER_PROJETOS,
             type: "POST",
             data: {
                 curso: curso,
@@ -195,11 +196,11 @@ $(document).ready(function () {
                 $('.botao-like').on('click', function() { 
                     const $botaoLike = $(this); 
                     const $itemPost = $botaoLike.closest('.card'); 
-                    const postId = $itemPost.data('post-id'); 
+                    const postId = $itemPost.data('post-id');
                     const $contadorLikes = $itemPost.find('.contador-likes'); 
     
                     $.ajax({ 
-                        url: './controller/projetosController.php', // Agora esta requisição é para dar o like 
+                        url: URL_CONTROLLER_PROJETOS, // Agora esta requisição é para dar o like 
                         method: 'POST', 
                         data: { action: 'like', post_id: postId }, // Adicionamos uma 'action' para o controller saber o que fazer 
                         dataType: 'json', 
