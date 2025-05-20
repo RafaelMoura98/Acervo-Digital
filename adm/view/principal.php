@@ -26,7 +26,7 @@
     </div>
 </div>
 <script>
-     const URL_CONTROLLER_PROJETOS = "<?php echo URL_ADM_CONTROLLER_PROJETOS; ?>";
+    const URL_CONTROLLER_PROJETOS = "<?php echo URL_ADM_CONTROLLER_PROJETOS; ?>";
     const URL_CONTROLLER_ARQUIVOS = "<?php echo URL_ADM_CONTROLLER_ARQUIVOS; ?>";
 </script>
 <script src="../assets/javascript/carregarProjetos.js"></script>

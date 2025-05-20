@@ -284,3 +284,11 @@ a {
 .resumo_justificado{
     text-align: justify;
 }
+
+.container-menu{
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

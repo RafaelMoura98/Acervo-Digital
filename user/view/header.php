@@ -19,12 +19,12 @@ include_once($caminhoBaseConfig."configuracao.php");
         <nav id="nav">
         <img src="<?= $caminhoBaseAssets.'/imagens/logo.png'?>" id="img_logo">
             <div id="menu">
-            <h2 class="fontWhite">Acervo Digital</h2>
-                <?php if ($paginaUrl === "user"):?>
+                <h2 class="fontWhite">Acervo Digital</h2>
+                <div class="container-menu">
                     <div class="container-search">
                         <input  type="text" class="search-bar" id="searchInput" placeholder="Buscar por título ou resumo...">
-                    </div>  
-                <?php endif;?>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
