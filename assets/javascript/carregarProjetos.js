@@ -1,4 +1,6 @@
 console.log(">>", URL_CONTROLLER_PROJETOS);
+console.log(">>", URL_CONTROLLER_ARQUIVOS);
+
 $(document).ready(function () {
     let timeout;
   
@@ -86,6 +88,7 @@ $(document).ready(function () {
                                             </button>
                                             <button class="btn" onclick="baixarArquivoPorId(${projeto.id})">BAIXAR</button>
                                             <button class="btn" onclick="visualizarArquivoPorId(${projeto.id})">VER ONLINE</button>
+                                            <button class="btn" onclick="editarProjetoPorId(${projeto.id})">EDITAR</button>
                                         </div>
                                     </div>
                                 </div>
@@ -118,6 +121,7 @@ $(document).ready(function () {
                                             </button>
                                             <button class="btn" onclick="baixarArquivoPorId(${projeto.id})">BAIXAR</button>
                                             <button class="btn" onclick="visualizarArquivoPorId(${projeto.id})">VER ONLINE</button>
+                                            <button class="btn" onclick="editarProjetoPorId(${projeto.id})">EDITAR</button>
                                         </div>
                                     </div>
                                 </div>
@@ -149,6 +153,7 @@ $(document).ready(function () {
                                             </button>
                                             <button class="btn" onclick="baixarArquivoPorId(${projeto.id})">BAIXAR</button>
                                             <button class="btn" onclick="visualizarArquivoPorId(${projeto.id})">VER ONLINE</button>
+                                            <button class="btn" onclick="editarProjetoPorId(${projeto.id})">EDITAR</button>
                                         </div>
                                     </div>
                                 </div>
@@ -180,6 +185,7 @@ $(document).ready(function () {
                                             </button>
                                             <button class="btn" onclick="baixarArquivoPorId(${projeto.id})">BAIXAR</button>
                                             <button class="btn" onclick="visualizarArquivoPorId(${projeto.id})">VER ONLINE</button>
+                                            <button class="btn" onclick="editarProjetoPorId(${projeto.id})">EDITAR</button>
                                         </div>
                                     </div>
                                 </div>

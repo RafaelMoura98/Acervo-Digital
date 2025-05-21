@@ -12,7 +12,7 @@ include_once($caminhoBaseConfig."configuracao.php");
 
 <?php if ($paginaUrl === "principal"):?>
     <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/style.css'?>">
-<?php elseif ($paginaUrl === "cadastrarPI" || $paginaUrl === "adm"):?>
+<?php elseif ($paginaUrl === "cadastrarPI" || $paginaUrl === "adm" || $paginaUrl === "editarPI"):?>
     <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/style.css'?>">
     <link rel="stylesheet" href="<?= $caminhoBaseAssets.'css/cadastrarPI.css'?>">
 <?php elseif ($paginaUrl === "recuperacao"):?>

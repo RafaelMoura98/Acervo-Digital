@@ -35,7 +35,7 @@ class Projetos
         public static function consultarProjetoPorId($id)
     {
         $pdo = Database::conexao();
-        $sql = "SELECT pi.id, pi.titulo, pi.nome_pdf
+        $sql = "SELECT pi.id, pi.titulo, pi.resumo, pi.curso, pi.ano, pi.nome_pdf
                 FROM pi_bd pi
                 WHERE pi.id = :id";
         $stmt = $pdo->prepare($sql);
@@ -159,7 +159,7 @@ class Projetos
                 return 'erro_tipo';
             }
 
-            if ($tamanho > 50 * 1024 * 1024) {
+            if ($tamanho > 2 * 1024 * 1024) {
                 return 'erro_tamanho';
             }
 
