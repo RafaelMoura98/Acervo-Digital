@@ -1,13 +1,11 @@
 <?php
-
 require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/projetosModel.php';
 
-var_dump($id_projeto);
 $id = $_GET['id'] ?? null;
 $modo = $_GET['modo'] ?? '';
 
 
-if (!$id || !in_array($modo, ['visualizar', 'download', 'editar'])) {
+if (!$id || !in_array($modo, ['visualizar', 'download'])) {
     http_response_code(400);
     echo "Requisição inválida.";
     exit;
@@ -15,16 +13,6 @@ if (!$id || !in_array($modo, ['visualizar', 'download', 'editar'])) {
 
 // Consultar o projeto pelo ID
 $projeto = Projetos::consultarProjetoPorId($id);
-
-if ($paginaUrl === 'editarPI'){
-    echo "aqui!";die;
-    $_SESSION['projeto']['titulo'] = $projeto['titulo'];
-    $_SESSION['projeto']['resumo'] = $projeto['resumo'];
-    $_SESSION['projeto']['curso'] = $projeto['curso'];
-    $_SESSION['projeto']['ano'] = $projeto['ano'];
-    $_SESSION['projeto']['nome_pdf'] = $projeto['nome_pdf'];
-}
-
 
 if (!$projeto) {
     http_response_code(404);

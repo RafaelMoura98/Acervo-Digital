@@ -10,7 +10,7 @@ unset($_SESSION['form_data']); // limpar para não manter depois
 
 <section>
     <div class="registro-container">
-        <form id="formCadastroPI" class="form" method="POST" action="./controller/processaCadastroPI.php" enctype="multipart/form-data">
+        <form id="formCadastroPI" class="form" method="POST" action="./controller/processamentoPI.php" enctype="multipart/form-data">
             <h1><b>Cadastro Projeto Integrador</b></h1>
             <div class="input-box">
                 <label for="itext"></label><br>
@@ -39,6 +39,7 @@ unset($_SESSION['form_data']); // limpar para não manter depois
                 <input name="fileToUpload" id="fileToUpload" type="file" accept=".pdf" required>
             </div>
             <br>
+            <input type="hidden" name="paginaUrl" value="<?= base64_encode($paginaUrl ?? '' )?>">
             <button type="submit" class="btnEnviar">Enviar</button>
         </form>
     </div>

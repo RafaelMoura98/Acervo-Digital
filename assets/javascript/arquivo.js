@@ -6,5 +6,5 @@ function baixarArquivoPorId(id){
 }
 
 function editarProjetoPorId(id){
-    window.location.href = URL_CONTROLLER_EDITAR + '&id=' + id; 
+    window.location.href = URL_CONTROLLER_EDITAR + '&id=' + id;
 }

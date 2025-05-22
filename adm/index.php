@@ -2,6 +2,7 @@
 
 if($_GET && isset($_GET['pagina'])){
     $paginaUrl = $_GET['pagina'];
+    $id = $_GET['id'] ?? null;
 }else{
     $paginaUrl = null;
 }
@@ -53,10 +54,11 @@ if ($paginaUrl === "adm") {
     include_once("controller/projetosController.php");
     include_once("view/cadastrarPI.php");
 }elseif($paginaUrl === "editarPI") {
-    include_once("model/acessoModel.php");
-    Acesso::protegerTela();
+    // include_once("model/acessoModel.php");
+    // Acesso::protegerTela();
     include_once("model/projetosModel.php");
     include_once("controller/projetosController.php");
+    $projeto = Projetos::consultarProjetoPorId($id);
     include_once("view/editarPI.php");
 }elseif ($paginaUrl === "sair"){
     include_once("model/acessoModel.php");
