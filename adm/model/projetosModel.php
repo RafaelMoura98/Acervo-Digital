@@ -35,7 +35,7 @@ class Projetos
         public static function consultarProjetoPorId($id)
     {
         $pdo = Database::conexao();
-        $sql = "SELECT pi.id, pi.titulo, pi.nome_pdf
+        $sql = "SELECT pi.id, pi.titulo, pi.resumo, pi.curso, pi.ano, pi.nome_pdf
                 FROM pi_bd pi
                 WHERE pi.id = :id";
         $stmt = $pdo->prepare($sql);
@@ -142,42 +142,72 @@ class Projetos
         return ($result)?true:false;
     }
 
-
-    public static function uploadArquivoComHash($titulo, $arquivoUpload)
+    public static function editarPI($id, $titulo, $resumo, $curso, $ano, $arquivo)
     {
+        if(!$titulo || !$resumo || !$curso || !$ano || !$arquivo){return;}
+        $pdo = Database::conexao();
+        $sql = "UPDATE pi_bd SET titulo = :titulo, resumo = :resumo, curso = :curso, ano = :ano, nome_pdf = :nome_pdf WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':titulo', $titulo);
+        $stmt->bindValue(':resumo', $resumo);
+        $stmt->bindValue(':curso', $curso);
+        $stmt->bindValue(':ano', $ano);
+        $stmt->bindValue(':nome_pdf', $arquivo);
+        $stmt->bindValue(':id', $id);
+        return ($stmt->execute())?true:false;
+    }
+
+
+    public static function uploadArquivoComHash($arquivoUpload, ?string $arquivoAntigo = null)
+    {
+        
+        
     
-            if (!isset($arquivoUpload) || $arquivoUpload['error'] !== UPLOAD_ERR_OK) {
-                return false;
+        date_default_timezone_set('America/Sao_Paulo');
+        $dataHora = date("YmdHis");
+
+        // Se vier um nome de arquivo antigo, tenta apagar
+        if ($arquivoAntigo) {
+            $caminhoAntigo = $_SERVER['DOCUMENT_ROOT'] 
+                . '/Acervo-Digital/assets/uploads/' 
+                . $arquivoAntigo;
+            if (is_file($caminhoAntigo)) {
+                unlink($caminhoAntigo);
             }
+        }
 
-            $extensao = strtolower(pathinfo($arquivoUpload['name'], PATHINFO_EXTENSION));
-            $tamanho = $arquivoUpload['size'];
-            $tmpName = $arquivoUpload['tmp_name'];
 
-            // Validações
-            if ($extensao !== 'pdf') {
-                return 'erro_tipo';
-            }
-
-            if ($tamanho > 50 * 1024 * 1024) {
-                return 'erro_tamanho';
-            }
-
-            // Nome com hash do título
-            $nomeHash = hash('sha256', $titulo);
-            $nomeFinal = $nomeHash . '.pdf';
-            $destino = $_SERVER['DOCUMENT_ROOT'] . '/Acervo-Digital/assets/uploads/' . $nomeFinal;
-
-            if (file_exists($destino)) {
-                return 'arquivo_ja_existe';
-            }
-
-            if (move_uploaded_file($tmpName, $destino)) {
-                return $nomeFinal;
-            }
-
+        if (!isset($arquivoUpload) || $arquivoUpload['error'] !== UPLOAD_ERR_OK) {
             return false;
         }
 
+        $extensao = strtolower(pathinfo($arquivoUpload['name'], PATHINFO_EXTENSION));
+        $tamanho = $arquivoUpload['size'];
+        $tmpName = $arquivoUpload['tmp_name'];
+
+        // Validações
+        if ($extensao !== 'pdf') {
+            return 'erro_tipo';
+        }
+
+        if ($tamanho > 2 * 1024 * 1024) {
+            return 'erro_tamanho';
+        }
+
+        // Nome com hash do título
+        $nomeHash = hash('sha1', $dataHora);
+        $nomeFinal = $nomeHash . '.pdf';
+        $destino = $_SERVER['DOCUMENT_ROOT'] . '/Acervo-Digital/assets/uploads/' . $nomeFinal;
+
+        if (file_exists($destino)) {
+            return 'arquivo_ja_existe';
+        }
+
+        if (move_uploaded_file($tmpName, $destino)) {
+            return $nomeFinal;
+        }
+
+        return false;
+    }
 
 }

@@ -4,13 +4,19 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/projetosModel.
 require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/config/configuracao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
     // 1) Captura dos campos
     $nome_titulo = $_POST['nome_titulo'] ?? null;
     $resumo = $_POST['resumo'] ?? null;
     $id_curso = $_POST['id_curso'] ?? null;
     $ano_publicacao = $_POST['ano_publicacao'] ?? null;
     $arquivo = null;
+    $paginaUrl = $_POST['paginaUrl'] ?? null;
+    $paginaUrl = base64_decode($paginaUrl);
+    $id = $_POST['id_projeto'] ?? null;
+    $id = base64_decode($id);
+    $arquivoAntigo = $_POST['arquivoAntigo'] ?? null;
+
+    
 
     // 2) Validações de título, resumo e ano (antes do upload)
     if (is_numeric($nome_titulo)) {
@@ -33,13 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // 3) Upload (no model) — só executa se os campos estiverem OK
-    $uploadResultado = Projetos::uploadArquivoComHash($nome_titulo, $_FILES['fileToUpload']);
+    $uploadResultado = Projetos::uploadArquivoComHash($_FILES['fileToUpload'], $arquivoAntigo);
 
     switch ($uploadResultado) {
         case 'erro_tipo':
             $msg = 'Apenas arquivos PDF são permitidos.'; break;
         case 'erro_tamanho':
-            $msg = 'O arquivo excede o tamanho máximo permitido (5MB).'; break;
+            $msg = 'O arquivo excede o tamanho máximo permitido (2MB).'; break;
         case 'arquivo_ja_existe':
             $msg = 'Já existe um arquivo com esse título.'; break;
         case false:
@@ -52,28 +58,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($arquivo === null) {
         $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
-        echo "<script>alert('Erro: {$msg}');window.location.href='"
-             .constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI")."';</script>";
+        echo "<script>alert('Erro: {$msg}');</script>";
         exit;
     }
 
     // 4) Finalmente, cadastra no banco
-    $cadastrado = Projetos::cadastrarPI(
-        $nome_titulo,
-        $resumo,
-        $id_curso,
-        $ano_publicacao,
-        $arquivo
-    );
+    if ($paginaUrl === "cadastrarPI") {
+        $cadastrado = Projetos::cadastrarPI(
+            $nome_titulo,
+            $resumo,
+            $id_curso,
+            $ano_publicacao,
+            $arquivo
+        );
+    } elseif ($paginaUrl === "editarPI") {
+        $cadastrado = Projetos::editarPI(
+            $id,
+            $nome_titulo,
+            $resumo,
+            $id_curso,
+            $ano_publicacao,
+            $arquivo
+        );
+    }
 
-    if ($cadastrado) {
-        echo "<script>alert('Projeto cadastrado com sucesso!');window.location.href='"
-             .constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI")."';</script>";
+    if ($cadastrado && ($paginaUrl === "cadastrarPI")) {
+        echo "<script>alert('Projeto cadastrado com sucesso!');
+              window.location.href='".constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI")."';
+              </script>";
         exit;
-    } else {
+    }elseif ($cadastrado && ($paginaUrl === "editarPI")) {
+        echo "<script>alert('Projeto editado com sucesso!');
+              window.location.href='".constant("URL_LOCAL_SITE_PAGINA_HOME")."';
+              </script>";
+        exit;
+    }else {
         $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
-        echo "<script>alert('Erro ao cadastrar o projeto. Tente novamente.');window.location.href='"
-             .constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI")."';</script>";
+        echo "<script>alert('Erro ao cadastrar o projeto. Tente novamente.');
+              window.location.href='".constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI")."';
+              </script>";
         exit;
     }
 }

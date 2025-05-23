@@ -28,6 +28,7 @@
 <script>
     const URL_CONTROLLER_PROJETOS = "<?php echo URL_ADM_CONTROLLER_PROJETOS; ?>";
     const URL_CONTROLLER_ARQUIVOS = "<?php echo URL_ADM_CONTROLLER_ARQUIVOS; ?>";
+    const URL_CONTROLLER_EDITAR = "<?php echo URL_LOCAL_SITE_PAGINA_EDITAR_PI; ?>";
 </script>
 <script src="../assets/javascript/carregarProjetos.js"></script>
 <script src="../assets/javascript/limparFiltros.js"></script>

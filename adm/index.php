@@ -2,6 +2,7 @@
 
 if($_GET && isset($_GET['pagina'])){
     $paginaUrl = $_GET['pagina'];
+    $id = $_GET['id'] ?? null;
 }else{
     $paginaUrl = null;
 }
@@ -32,7 +33,7 @@ if ($paginaUrl === "adm") {
     if (isset($_SESSION["usuario"]["status"]) && $_SESSION["usuario"]["status"] === 'logado') {
         echo "<script>
             alert('Você já está logado!');
-            window.location.href = '".constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI")."';
+            window.location.href = '".constant("URL_LOCAL_SITE_PAGINA_HOME")."';
         </script>";
         exit;
     }
@@ -52,6 +53,13 @@ if ($paginaUrl === "adm") {
     include_once("model/projetosModel.php");
     include_once("controller/projetosController.php");
     include_once("view/cadastrarPI.php");
+}elseif($paginaUrl === "editarPI") {
+    // include_once("model/acessoModel.php");
+    // Acesso::protegerTela();
+    include_once("model/projetosModel.php");
+    include_once("controller/projetosController.php");
+    $projeto = Projetos::consultarProjetoPorId($id);
+    include_once("view/editarPI.php");
 }elseif ($paginaUrl === "sair"){
     include_once("model/acessoModel.php");
     Acesso::limparSessao();
