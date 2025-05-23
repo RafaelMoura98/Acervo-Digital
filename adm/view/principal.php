@@ -21,7 +21,15 @@
         </div>
     </div>
     <div id="content">
-        <div id="content_PI">          
+        <div id="content_PI">
+            <section>
+                <h1>Últimos Projetos</h1>
+                <?php foreach (Projetos::ultimosProjetos() as $projeto): include('partials/cardProjetos.php'); endforeach ?>
+            </section>         
+            <section>
+                <h1>Projeto Mais Curtidos</h1>
+                <?php foreach (Projetos::projetosMaisCurtidos() as $projeto): include('partials/cardProjetos.php'); endforeach ?>
+            </section>         
         </div>
     </div>
 </div>
@@ -30,7 +38,7 @@
     const URL_CONTROLLER_ARQUIVOS = "<?php echo URL_ADM_CONTROLLER_ARQUIVOS; ?>";
     const URL_CONTROLLER_EDITAR = "<?php echo URL_LOCAL_SITE_PAGINA_EDITAR_PI; ?>";
 </script>
-<script src="../assets/javascript/carregarProjetos.js"></script>
+<!-- <script src="../assets/javascript/carregarProjetos.js"></script> -->
 <script src="../assets/javascript/limparFiltros.js"></script>
 <script src="../assets/javascript/arquivo.js"></script>
 <?php if ($paginaUrl === 'cadastrarPI') : ?>
