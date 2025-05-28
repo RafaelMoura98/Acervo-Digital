@@ -17,7 +17,7 @@ function carregarPI() {
   const anos   = $("input[name='ano[]']:checked").map(function(){ return this.value; }).get();
 
   $.ajax({
-    url: "controller/projetosController.php",
+    url: URL_CONTROLLER_PROJETOS,
     method: "POST",
     data: { 
       cursos,    // array de ids de curso
@@ -42,7 +42,7 @@ function bindLikes() {
     const id = $card.data('post-id');
     const $cnt = $card.find('.contador-likes');
 
-    $.post("controller/projetosController.php", { action: 'like', post_id: id }, res => {
+    $.post(URL_CONTROLLER_PROJETOS, { action: 'like', post_id: id }, res => {
       if (res.success) {
         $cnt.text(res.new_like_count);
         $(this).addClass('liked');

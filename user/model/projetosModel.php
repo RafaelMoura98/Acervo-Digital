@@ -7,7 +7,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/config/conexao.php';
 class Projetos 
 {
     
-        public static function consultarProjetos($curso, $ano)
+        public static function consultarProjetos($cursos, $anos)
     {
         $pdo = Database::conexao();
         $sql = "SELECT pi.*, c.id AS curso_id, c.curso AS nome_curso
@@ -16,26 +16,43 @@ class Projetos
                 WHERE 1=1";
         $params = [];
 
-        if ($curso) {
-            $sql .= " AND c.id = :curso";
-            $params[':curso'] = $curso;
+        // --- Curso: array ou valor único
+        if (!empty($cursos)) {
+            if (is_array($cursos)) {
+                // IN (?, ?, ...)
+                $placeholders = implode(',', array_fill(0, count($cursos), '?'));
+                $sql .= " AND c.id IN ($placeholders)";
+                // preserva ordem dos ? na array
+                $params = array_merge($params, $cursos);
+            } else {
+                $sql .= " AND c.id = ?";
+                $params[] = $cursos;
+            }
         }
 
-        if ($ano) {
-            $sql .= " AND pi.ano = :ano";
-            $params[':ano'] = $ano;
+        // --- Ano: array ou valor único
+        if (!empty($anos)) {
+            if (is_array($anos)) {
+                $placeholders = implode(',', array_fill(0, count($anos), '?'));
+                $sql .= " AND pi.ano IN ($placeholders)";
+                $params = array_merge($params, $anos);
+            } else {
+                $sql .= " AND pi.ano = ?";
+                $params[] = $anos;
+            }
         }
 
         $sql .= " ORDER BY pi.titulo ASC";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute($params);  // Passando os parâmetros para a execução
+        $stmt->execute($params);
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
         public static function consultarProjetoPorId($id)
     {
         $pdo = Database::conexao();
-        $sql = "SELECT pi.id, pi.titulo, pi.nome_pdf
+        $sql = "SELECT pi.id, pi.titulo, pi.resumo, pi.curso, pi.ano, pi.nome_pdf
                 FROM pi_bd pi
                 WHERE pi.id = :id";
         $stmt = $pdo->prepare($sql);
@@ -127,57 +144,5 @@ class Projetos
         return $resultado ? $resultado['like_pi'] : 0; 
     } 
     
-    public static function cadastrarPI($titulo, $resumo, $curso, $ano, $arquivo)
-    {
-        if(!$titulo || !$resumo || !$curso || !$ano || !$arquivo){return;}
-        $pdo = Database::conexao();
-        $sql = "INSERT INTO pi_bd (titulo, resumo, curso, ano, nome_pdf) VALUES (:titulo, :resumo, :curso, :ano, :nome_pdf)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(':titulo', $titulo);
-        $stmt->bindValue(':resumo', $resumo);
-        $stmt->bindValue(':curso', $curso);
-        $stmt->bindValue(':ano', $ano);
-        $stmt->bindValue(':nome_pdf', $arquivo);
-        $result = $stmt->execute();
-        return ($result)?true:false;
-    }
-
-
-    public static function uploadArquivoComHash($titulo, $arquivoUpload)
-    {
-    
-            if (!isset($arquivoUpload) || $arquivoUpload['error'] !== UPLOAD_ERR_OK) {
-                return false;
-            }
-
-            $extensao = strtolower(pathinfo($arquivoUpload['name'], PATHINFO_EXTENSION));
-            $tamanho = $arquivoUpload['size'];
-            $tmpName = $arquivoUpload['tmp_name'];
-
-            // Validações
-            if ($extensao !== 'pdf') {
-                return 'erro_tipo';
-            }
-
-            if ($tamanho > 50 * 1024 * 1024) {
-                return 'erro_tamanho';
-            }
-
-            // Nome com hash do título
-            $nomeHash = hash('sha256', $titulo);
-            $nomeFinal = $nomeHash . '.pdf';
-            $destino = $_SERVER['DOCUMENT_ROOT'] . '/Acervo-Digital/assets/uploads/' . $nomeFinal;
-
-            if (file_exists($destino)) {
-                return 'arquivo_ja_existe';
-            }
-
-            if (move_uploaded_file($tmpName, $destino)) {
-                return $nomeFinal;
-            }
-
-            return false;
-        }
-
 
 }
