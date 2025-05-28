@@ -17,7 +17,7 @@ if (isset($usuarioCadastrado["login"]) && $usuarioCadastrado["login"] === $login
 
     if ($senhaValida === true) {
         Acesso::registrarAcessoValido($usuarioCadastrado);
-        header("Location: " . constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI"));
+        header("Location: " . constant("URL_LOCAL_SITE_PAGINA_ADM") . 'principal');
         exit; // Interrompe o script após o redirecionamento
     } else {
         echo "<script>

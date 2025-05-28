@@ -138,19 +138,22 @@ a {
 .card-footer {
     display: flex;
     margin-top: 15px;
-    gap: 20px;
+    gap: 8px;
+    align-items: center;
     justify-content: flex-end;
 }
 
-.btn {
-    background-color: #0C2856; /* Azul semelhante ao Santander */
+.card-footer .btn, 
+.card-footer .botao-like {
+    white-space: nowrap; /* Impede quebra de linha */
+    padding: 8px 12px;
+    font-size: 12px;
+    background-color: #0C2856;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 8px 12px;
     cursor: pointer;
 }
-
 
 /* Container dos cards */
 .card-container {
@@ -237,15 +240,6 @@ a {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-}
-
-.botao-like{
-    background-color: #0C2856;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 12px;
-    cursor: pointer;
 }
 
 .card-header-right {
