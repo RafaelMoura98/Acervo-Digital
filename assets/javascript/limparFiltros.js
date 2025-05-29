@@ -3,8 +3,8 @@ $(document).ready(function() {
   
     botaoLimpar.on("click", function() {
 
-      $("input[name='curso[]']").prop("checked", false);
-      $("input[name='ano[]']").prop("checked", false);
+      $("input[name='curso']").prop("checked", false);
+      $("input[name='ano']").prop("checked", false);
       $("#searchInput").val("");
 
       carregarPI();

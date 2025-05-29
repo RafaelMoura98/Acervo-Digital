@@ -31,7 +31,7 @@
             </div>
             <br>
             <input type="hidden" name="paginaUrl" value="<?= base64_encode($paginaUrl ?? '' )?>">
-            <input type="hidden" name="id_projeto" value="<?= $id ?? '' ?>">
+            <input type="hidden" name="id_projeto" value="<?= base64_encode($id ?? '' )?>">
             <input type="hidden" name="arquivoAntigo" value="<?= $projeto['nome_pdf'] ?? '' ?>">
             <button type="submit" class="btnEnviar">Enviar</button>
         </form>

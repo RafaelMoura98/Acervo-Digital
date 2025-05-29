@@ -33,12 +33,13 @@ if ($paginaUrl === "adm") {
     if (isset($_SESSION["usuario"]["status"]) && $_SESSION["usuario"]["status"] === 'logado') {
         echo "<script>
             alert('Você já está logado!');
-            window.location.href = '".constant("URL_LOCAL_SITE_PAGINA_ADM"). 'principal' ."';
+            window.location.href = '".constant("URL_LOCAL_SITE_PAGINA_HOME")."';
         </script>";
         exit;
     }
 
 }elseif ($paginaUrl === "principal")  {
+    define('URL_CONTROLLER', 'URL_ADM_CONTROLLER_PROJETOS');
     include_once("model/cursosModel.php");
     include_once("model/projetosModel.php");
     include_once("controller/cursosController.php");
@@ -56,7 +57,8 @@ if ($paginaUrl === "adm") {
     // include_once("model/acessoModel.php");
     // Acesso::protegerTela();
     include_once("model/projetosModel.php");
-    $projeto = Projetos::consultarProjetoPorId(base64_decode($id));
+    include_once("controller/projetosController.php");
+    $projeto = Projetos::consultarProjetoPorId($id);
     include_once("view/editarPI.php");
 }elseif ($paginaUrl === "sair"){
     include_once("model/acessoModel.php");

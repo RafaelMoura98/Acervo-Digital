@@ -22,19 +22,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (is_numeric($nome_titulo)) {
         $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
         echo "<script>alert('O título não pode ser um número.');window.location.href='"
-             .constant("URL_LOCAL_SITE_PAGINA_ADM") . 'cadastrarPI'."';</script>";
+             .constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI")."';</script>";
         exit;
     }
     if (is_numeric($resumo)) {
         $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
         echo "<script>alert('O resumo não pode ser um número.');window.location.href='"
-             .constant("URL_LOCAL_SITE_PAGINA_ADM") . 'cadastrarPI'."';</script>";
+             .constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI")."';</script>";
         exit;
     }
     if (!filter_var($ano_publicacao, FILTER_VALIDATE_INT)) {
         $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
         echo "<script>alert('O campo ano deve conter apenas números inteiros!');window.location.href='"
-             .constant("URL_LOCAL_SITE_PAGINA_ADM") . 'cadastrarPI'."';</script>";
+             .constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI")."';</script>";
         exit;
     }
 
@@ -84,18 +84,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($cadastrado && ($paginaUrl === "cadastrarPI")) {
         echo "<script>alert('Projeto cadastrado com sucesso!');
-              window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . 'principal'."';
+              window.location.href='".constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI")."';
               </script>";
         exit;
     }elseif ($cadastrado && ($paginaUrl === "editarPI")) {
         echo "<script>alert('Projeto editado com sucesso!');
-              window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . 'principal'."';
+              window.location.href='".constant("URL_LOCAL_SITE_PAGINA_HOME")."';
               </script>";
         exit;
     }else {
         $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
         echo "<script>alert('Erro ao cadastrar o projeto. Tente novamente.');
-              window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . 'cadastrarPI'."';
+              window.location.href='".constant("URL_LOCAL_SITE_PAGINA_CADASTRAR_PI")."';
               </script>";
         exit;
     }
