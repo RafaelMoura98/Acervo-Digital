@@ -53,8 +53,8 @@ if ($paginaUrl === "adm") {
     include_once("controller/projetosController.php");
     include_once("view/cadastrarPI.php");
 }elseif($paginaUrl === "editarPI") {
-    // include_once("model/acessoModel.php");
-    // Acesso::protegerTela();
+    include_once("model/acessoModel.php");
+    Acesso::protegerTela();
     include_once("model/projetosModel.php");
     $projeto = Projetos::consultarProjetoPorId(base64_decode($id));
     include_once("view/editarPI.php");
