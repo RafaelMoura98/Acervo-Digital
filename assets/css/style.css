@@ -1,15 +1,37 @@
 /* Estilo geral */
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(221, 228, 245);;
+
+*{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(221, 228, 245);;
+    width: 100%;
+    height: 100%;
 }
 
 header{
     background-color: #0C2856;
     padding: 5px 10px;
+    width: 100%;
 }
+
+.navbar-color-default li a{
+    text-decoration: none;
+    color: white; /* Cor dos links padrão */
+    font-size: 16px;
+    padding: 8px 12px; /* Mantém o padding para espaçamento */
+    border-radius: 5px; /* Mantém as bordas arredondadas (se desejar) */
+    transition: color 0.3s ease; /* Transição suave apenas para a cor do texto */
+}
+
+.navbar-color-default li a:hover{
+    color: #777; /* Tom de cinza mais claro ao passar o mouse */
+}
+
 
 input[type="radio"] {
     margin: 0;
@@ -51,12 +73,6 @@ a {
     margin-bottom: 10px; /* Adiciona um espaço abaixo do título, se necessário */
 }
 
-#nav{
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
 #menu{
     display: flex;
     align-items: center;
@@ -73,7 +89,7 @@ a {
     gap: 15px;
 }
 
-#img_logo{
+.img-logo{
     max-height: 50px; /* Ajuste a altura da logo */
     margin-right: 20px;
     margin-left: 20px;
@@ -135,7 +151,7 @@ a {
 }
 
 /* Rodapé dos cards */
-.card-footer {
+.footer-card {
     display: flex;
     margin-top: 15px;
     gap: 8px;
@@ -143,8 +159,8 @@ a {
     justify-content: flex-end;
 }
 
-.card-footer .btn, 
-.card-footer .botao-like {
+.footer-card .btn, 
+.footer-card .botao-like {
     white-space: nowrap; /* Impede quebra de linha */
     padding: 8px 12px;
     font-size: 12px;
@@ -235,7 +251,7 @@ a {
     background-color: #e0e0e0; /* Um tom mais claro no hover */
 }
 
-.card-header {
+.header-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -254,27 +270,6 @@ a {
     color: #666666;
 }
 
-.navbar-links {
-    list-style: none; /* Remove os marcadores de lista */
-    padding: 0;
-    margin: 0;
-    display: flex; /* Alinha os links horizontalmente */
-    gap: 20px; /* Espaço entre os links */
-}
-  
-.navbar-links li a {
-    text-decoration: none;
-    color: white; /* Cor dos links padrão */
-    font-size: 16px;
-    padding: 8px 12px; /* Mantém o padding para espaçamento */
-    border-radius: 5px; /* Mantém as bordas arredondadas (se desejar) */
-    transition: color 0.3s ease; /* Transição suave apenas para a cor do texto */
-  }
-  
-.navbar-links li a:hover {
-    color: #777; /* Tom de cinza mais claro ao passar o mouse */
-  }
-
 .resumo_justificado{
     text-align: justify;
 }
@@ -284,5 +279,20 @@ a {
     width: 80%;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 10px;;
+}
+
+#searchInput:focus {
+    border-color: #ff9900;       /* cor da borda ao focar */
+    box-shadow: 0 0 0 0.2rem #333333;  /* sombra externa */
+    outline: none;               /* remove contorno padrão do navegador */
+}
+
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }

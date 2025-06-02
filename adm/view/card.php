@@ -7,7 +7,7 @@
     <?php foreach ($projetos as $projeto): ?>
         <div class="card-container">
             <div class="card" data-post-id="<?= htmlspecialchars($projeto['id']) ?>">
-                <div class="card-header">
+                <div class="header-card">
                     <h3><?= htmlspecialchars($projeto['titulo']) ?></h3>
                     <div class="card-header-right">
                         <h5>Curtidas:</h5>
@@ -19,7 +19,7 @@
                 <p class="resumo_justificado"> <strong>Resumo:</strong> <?= htmlspecialchars($projeto['resumo']) ?></p>
                 <p> <strong>Curso:</strong> <?= htmlspecialchars($projeto['nome_curso']) ?></p>
                 <p> <strong>Ano de publicação:</strong> <?= htmlspecialchars($projeto['ano']) ?></p>
-                <div class="card-footer">
+                <div class="footer-card">
                     <button class="botao-like"><span>CURTIR</span></button>
                     <a href="<?= constant('URL_ADM_CONTROLLER_ARQUIVOS').'?modo=download&id='.htmlspecialchars($projeto['id'])?>" download="<?= $projeto['titulo'].'.pdf' ?>" class="btn">BAIXAR</a>
                     <a href="<?= constant('URL_ADM_CONTROLLER_ARQUIVOS').'?modo=visualizar&id='.htmlspecialchars($projeto['id'])?>" target="_blank" class="btn">VER ONLINE</a>
