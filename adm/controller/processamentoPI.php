@@ -3,6 +3,9 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/projetosModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/config/configuracao.php';
 
+
+$isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 1) Captura dos campos
     $nome_titulo = $_POST['nome_titulo'] ?? null;
@@ -16,29 +19,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = base64_decode($id);
     $arquivoAntigo = $_POST['arquivoAntigo'] ?? null;
 
-    
-
-    // 2) Validações de título, resumo e ano (antes do upload)
+    // 2) Validações
     if (is_numeric($nome_titulo)) {
         $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
-        echo "<script>alert('O título não pode ser um número.');window.location.href='"
-             .constant("URL_LOCAL_SITE_PAGINA_ADM") . 'cadastrarPI'."';</script>";
-        exit;
-    }
-    if (is_numeric($resumo)) {
-        $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
-        echo "<script>alert('O resumo não pode ser um número.');window.location.href='"
-             .constant("URL_LOCAL_SITE_PAGINA_ADM") . 'cadastrarPI'."';</script>";
-        exit;
-    }
-    if (!filter_var($ano_publicacao, FILTER_VALIDATE_INT)) {
-        $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
-        echo "<script>alert('O campo ano deve conter apenas números inteiros!');window.location.href='"
-             .constant("URL_LOCAL_SITE_PAGINA_ADM") . 'cadastrarPI'."';</script>";
+        $msg = 'O título não pode ser um número.';
+        if ($isAjax) {
+            echo json_encode(['success' => false, 'message' => $msg]);
+            exit;
+        }
+        echo "<script>alert('$msg');window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . "cadastrarPI';</script>";
         exit;
     }
 
-    // 3) Upload (no model) — só executa se os campos estiverem OK
+    if (is_numeric($resumo)) {
+        $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
+        $msg = 'O resumo não pode ser um número.';
+        if ($isAjax) {
+            echo json_encode(['success' => false, 'message' => $msg]);
+            exit;
+        }
+        echo "<script>alert('$msg');window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . "cadastrarPI';</script>";
+        exit;
+    }
+
+    if (!filter_var($ano_publicacao, FILTER_VALIDATE_INT)) {
+        $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
+        $msg = 'O campo ano deve conter apenas números inteiros!';
+        if ($isAjax) {
+            echo json_encode(['success' => false, 'message' => $msg]);
+            exit;
+        }
+        echo "<script>alert('$msg');window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . "cadastrarPI';</script>";
+        exit;
+    }
+
+    // 3) Upload
     $uploadResultado = Projetos::uploadArquivoComHash($_FILES['fileToUpload'], $arquivoAntigo);
 
     switch ($uploadResultado) {
@@ -51,18 +66,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case false:
             $msg = 'Erro ao fazer upload do arquivo.'; break;
         default:
-            // deu certo: $uploadResultado é o nome do arquivo
             $arquivo = $uploadResultado;
             break;
     }
 
     if ($arquivo === null) {
         $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
-        echo "<script>alert('Erro: {$msg}');</script>";
+        if ($isAjax) {
+            echo json_encode(['success' => false, 'message' => $msg]);
+            exit;
+        }
+        echo "<script>alert('Erro: $msg');</script>";
         exit;
     }
 
-    // 4) Finalmente, cadastra no banco
+    // 4) Banco
     if ($paginaUrl === "cadastrarPI") {
         $cadastrado = Projetos::cadastrarPI(
             $nome_titulo,
@@ -82,21 +100,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
     }
 
-    if ($cadastrado && ($paginaUrl === "cadastrarPI")) {
-        echo "<script>alert('Projeto cadastrado com sucesso!');
-              window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . 'principal'."';
-              </script>";
+    // 5) Resposta final
+    if ($cadastrado) {
+        $msg = ($paginaUrl === "cadastrarPI") ? 'Projeto cadastrado com sucesso!' : 'Projeto editado com sucesso!';
+        if ($isAjax) {
+            echo json_encode(['success' => true, 'message' => $msg]);
+        } else {
+            echo "<script>alert('$msg');
+                  window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . "principal';</script>";
+        }
         exit;
-    }elseif ($cadastrado && ($paginaUrl === "editarPI")) {
-        echo "<script>alert('Projeto editado com sucesso!');
-              window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . 'principal'."';
-              </script>";
-        exit;
-    }else {
+    } else {
         $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
-        echo "<script>alert('Erro ao cadastrar o projeto. Tente novamente.');
-              window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . 'cadastrarPI'."';
-              </script>";
+        $msg = 'Erro ao cadastrar o projeto. Tente novamente.';
+        if ($isAjax) {
+            echo json_encode(['success' => false, 'message' => $msg]);
+        } else {
+            echo "<script>alert('$msg');
+                  window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . "cadastrarPI';</script>";
+        }
         exit;
     }
 }

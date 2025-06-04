@@ -6,9 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch('./controller/projetosController.php', {
+      const response = await fetch('./controller/processamentoPI.php', {
         method: 'POST',
-        body: formData
+        body: formData,
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest' // ESSENCIAL!
+        }
       });
 
       if (!response.ok) {

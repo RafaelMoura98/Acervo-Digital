@@ -3,6 +3,7 @@
 
 session_start();
 
+
 // $SERVER["SERVER_NAME"]
 switch ('localhost') {
     case 'localhost':
@@ -12,7 +13,7 @@ switch ('localhost') {
         $enviroment['homol'] = "https://meusite.com.br";
         break;
     case 'prod':
-        $enviroment['prod'] = "";
+        $enviroment['prod'] = "http://192.168.5.219/";
         break;
 }
 
