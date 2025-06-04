@@ -63,3 +63,4 @@ if ($paginaUrl === "adm") {
     Acesso::limparSessao();
 }
 
+include_once("view/footer.php");

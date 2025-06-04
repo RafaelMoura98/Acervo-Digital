@@ -16,7 +16,7 @@
                         </span>
                     </div>
                 </div>
-                <p class="resumo_justificado"> <strong>Resumo:</strong> <?= htmlspecialchars($projeto['resumo']) ?></p>
+                <p class=""> <strong>Resumo:</strong> <?= htmlspecialchars($projeto['resumo']) ?></p>
                 <p> <strong>Curso:</strong> <?= htmlspecialchars($projeto['nome_curso']) ?></p>
                 <p> <strong>Ano de publicação:</strong> <?= htmlspecialchars($projeto['ano']) ?></p>
                 <div class="card-footer">

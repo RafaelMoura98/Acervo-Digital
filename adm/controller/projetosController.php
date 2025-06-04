@@ -2,56 +2,56 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/projetosModel.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-    // Ação para carregar HTML
-    if ($_POST['action'] === 'carregar_html_projetos') {
-    $termo  = $_POST['termo'] ?? '';
-    $cursos = $_POST['cursos'] ?? [];  // array de ids
-    $anos   = $_POST['anos']   ?? [];  // array de anos
+    $action = $_POST['action'] ?? '';
 
-    // Se houver termo, prioriza busca
-    if (trim($termo) !== '') {
-        $projetos = Projetos::buscarPorTermo($termo);
-        $titulo   = count($projetos) . " Resultado(s) Encontrado(s)";
-        include '../view/card.php';
-    }
-    // Se nenhum filtro, mostra últimos+curtidos
-    elseif (empty($cursos) && empty($anos)) {
-        $ultimos  = Projetos::ultimosProjetos();
-        $curtidos = Projetos::ProjetosMaisCurtidos();
+    switch ($action) {
+        case 'carregar_html_projetos':
+            $termo  = $_POST['termo'] ?? '';
+            $cursos = $_POST['cursos'] ?? [];
+            $anos   = $_POST['anos'] ?? [];
 
-        $titulo   = 'Últimos Projetos';  $projetos = $ultimos;
-        include '../view/card.php';
-        $titulo   = 'Projetos Mais Curtidos'; $projetos = $curtidos;
-        include '../view/card.php';
-    }
-    // Senão, filtra pelos arrays
-    else {
-        // Supondo que você implemente esse método:
-        $projetos = Projetos::consultarProjetos($cursos, $anos);
-        $titulo   = 'Projetos Filtrados - ' . count($projetos) . ' Resultado(s)';
-        include '../view/card.php';
-    }
-    exit;
-}
-    // Ação de like (mantida como JSON)
-    if (isset($_POST['action']) && $_POST['action'] === 'like' && isset($_POST['post_id'])) {
-        header('Content-Type: application/json');
-        $postId = filter_var($_POST['post_id'], FILTER_SANITIZE_NUMBER_INT);
-        if ($postId) {
-            $success = Projetos::adicionarLike($postId); 
-            if ($success) {
-                $newLikeCount = Projetos::obterNumeroLikes($postId);
-                echo json_encode([
-                    'success' => true, 
-                    'new_like_count' => $newLikeCount
-                ]);
+            if (trim($termo) !== '') {
+                $projetos = Projetos::buscarPorTermo($termo);
+                $titulo   = count($projetos) . " Resultado(s) Encontrado(s)";
+                include '../view/card.php';
+            } elseif (empty($cursos) && empty($anos)) {
+                $ultimos  = Projetos::ultimosProjetos();
+                $curtidos = Projetos::ProjetosMaisCurtidos();
+
+                $titulo = 'Últimos Projetos';  $projetos = $ultimos;
+                include '../view/card.php';
+
+                $titulo = 'Projetos Mais Curtidos'; $projetos = $curtidos;
+                include '../view/card.php';
+            } else {
+                $projetos = Projetos::consultarProjetos($cursos, $anos);
+                $titulo   = 'Projetos Filtrados - ' . count($projetos) . ' Resultado(s)';
+                include '../view/card.php';
+            }
+            exit;
+
+        case 'like':
+            header('Content-Type: application/json');
+            $postId = filter_var($_POST['post_id'], FILTER_SANITIZE_NUMBER_INT);
+            if ($postId) {
+                $success = Projetos::adicionarLike($postId);
+                if ($success) {
+                    $newLikeCount = Projetos::obterNumeroLikes($postId);
+                    echo json_encode([
+                        'success' => true,
+                        'new_like_count' => $newLikeCount
+                    ]);
+                    exit;
+                }
+                echo json_encode(['success' => false, 'error' => 'Erro ao adicionar like.']);
                 exit;
             }
-            echo json_encode(['success' => false, 'error' => 'Erro ao adicionar like.']);
+            echo json_encode(['success' => false, 'error' => 'ID inválido.']);
             exit;
-        }
-        echo json_encode(['success' => false, 'error' => 'ID do projeto inválido.']);
-        exit;
+
+        default:
+            http_response_code(400);
+            echo json_encode(['success' => false, 'error' => 'Ação desconhecida.']);
+            exit;
     }
 }

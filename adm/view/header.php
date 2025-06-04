@@ -22,39 +22,15 @@ include_once($caminhoBaseConfig . "configuracao.php");
     <?php endif; ?> 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
 
-        .navbar-color-default {
-            background-color: #003366;
-        }
-
-        .navbar {
-            min-height: 70px;
-        }
-
-        .navbar-brand {
-            color: #fff;
-        }
-
-        .navbar-nav .nav-link {
-            color: #fff;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #ccc;
-        }
-    </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <header>
     <nav class="navbar navbar-expand-lg navbar-color-default">
         <div class="container-fluid">
 
             <a class="navbar-brand d-flex align-items-center" href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM') . 'principal' ?>" style="text-decoration: none; color: #fff;">
-                <img src="<?= $caminhoBaseAssets . '/imagens/logo.png' ?>" alt="Logo" height="40px" class="me-2">
+                <img src="<?= $caminhoBaseAssets . '/imagens/logo.png' ?>" alt="Logo" height="40px" class="me-3">
                 Acervo Digital
             </a>
 
@@ -64,14 +40,8 @@ include_once($caminhoBaseConfig . "configuracao.php");
             </button>
 
             <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
-                <div class="d-flex w-100 align-items-center justify-content-between">
 
-                    <?php if ($paginaUrl === "principal"): ?>
-                        <form class="mx-auto my-2 my-lg-0" style="width: 100%; max-width: 400px;" role="search">
-                            <input id="searchInput" class="form-control" type="search" placeholder="Buscar por título ou resumo"
-                                   aria-label="Search" />
-                        </form>
-                    <?php endif; ?>
+                <div class="d-flex w-100 align-items-center justify-content-between">
 
                     <ul class="navbar-nav d-flex flex-row align-items-center gap-3 ms-auto mb-0">
                         <li class="nav-item">

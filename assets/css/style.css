@@ -7,16 +7,19 @@
 }
 
 html, body {
-    font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(221, 228, 245);;
     width: 100%;
     height: 100%;
+    font-size: 16px;
 }
 
 header{
     background-color: #0C2856;
-    padding: 5px 10px;
     width: 100%;
+}
+
+footer{
+  background-color: #0C2856;
 }
 
 .navbar-color-default li a{
@@ -32,262 +35,14 @@ header{
     color: #777; /* Tom de cinza mais claro ao passar o mouse */
 }
 
-
-input[type="radio"] {
-    margin: 0;
-    padding: 0;
-    transform: translateY(-1px); /* Ajuste fino na posição vertical */
-}
-
-label {
-    margin: 0;
-}
-
-a {
-    text-decoration: none;
-}
-
-.fontWhite{
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-#main{
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
-    margin-left: 20px;
-}
-
-#content{
-    display: flex;
-    justify-content: center;
-    width: 80%;
-}
-
-#content_PI h1 {
-    text-align: center; /* Centraliza o texto horizontalmente */
-    margin-top: 20px; /* Adiciona um espaço acima do título, se necessário */
-    margin-bottom: 10px; /* Adiciona um espaço abaixo do título, se necessário */
-}
-
-#menu{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-#menu_button{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-.img-logo{
-    max-height: 50px; /* Ajuste a altura da logo */
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
-#info_PI{
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: left;
-    margin-top: 86px;
-}
-
-#content_PI{
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-}
-
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-}
-
-
-/* Container dos cards */
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
-}
-
-/* Estilo dos cards */
-.card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    padding: 20px;
-    text-align: left;
-}
-
-.card h4 {
-    font-size: 1.2em;
-    color: #333333;
-}
-
-.card p {
-    font-size: 0.9em;
-    color: black;
-}
-
-/* Rodapé dos cards */
-.footer-card {
-    display: flex;
-    margin-top: 15px;
-    gap: 8px;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.footer-card .btn, 
-.footer-card .botao-like {
-    white-space: nowrap; /* Impede quebra de linha */
-    padding: 8px 12px;
-    font-size: 12px;
-    background-color: #0C2856;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Container dos cards */
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    gap: 15px; /* Espaço entre os itens */
-}
-
-/* Estilo dos itens com radio */
-.card-radio {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espaço entre o rádio e o texto */
-    background-color: #ffffff; /* Fundo branco */
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
-    padding: 10px 15px; /* Espaçamento interno */
-}
-
-.card-radio:hover {
-    background-color: #f0f8ff; /* Fundo azul claro no hover */
-}
-
-.card-radio input[type="radio"] {
-    cursor: pointer; /* Cursor interativo no rádio */
-}
-
-.card-radio label {
-    font-size: 1em;
-    color: #333333;
-    cursor: pointer;
-}
-
-.container-search {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 600px; /* largura máxima */
-}
-
-.search-bar {
-    width: 100%;
-    padding: 10px 20px;
-    border: 2px solid #0c2d5e;
-    border-radius: 10px;
-    font-size: 16px;
-    color: #0c2d5e;
-    background-color: #f2f6ff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: 0.3s ease-in-out;
-}
-
-.search-bar:focus {
-    outline: none;
-    border-color: #0a1f40;
-    box-shadow: 0 0 10px rgba(12, 45, 94, 0.4);
-    background-color: #ffffff;
-  }
-
 #limparFiltros {
     background-color: #f0f0f0; /* Um cinza claro para o fundo do botão */
     color: #343a40; /* Um tom de cinza escuro para o texto, similar aos outros elementos */
-    border: 1px solid #ced4da; /* Uma borda sutil, similar aos inputs */
-    padding: 8px 15px; /* Espaçamento interno para o texto e ícone */
-    border-radius: 5px; /* Bordas arredondadas para um visual mais suave */
-    cursor: pointer; /* Indica que é um elemento clicável */
-    font-size: 14px; /* Tamanho da fonte para combinar com o texto ao redor */
-    transition: background-color 0.3s ease; /* Transição suave para o hover */
-    display: flex; /* Para alinhar o ícone e o texto */
-    justify-content: center;
-    align-items: center; /* Alinha verticalmente o ícone e o texto */
-    gap: 5px; /* Espaçamento entre o ícone e o texto */
-    margin-bottom: 10px; /* Espaçamento abaixo do botão */
 }
 
 #limparFiltros:hover {
     background-color: #e0e0e0; /* Um tom mais claro no hover */
 }
-
-.header-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.card-header-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.card-header-right span {
-    font-size: 14px;
-    font-weight: bold;
-    color: #666666;
-}
-
-.resumo_justificado{
-    text-align: justify;
-}
-
-.container-menu{
-    display: flex;
-    width: 80%;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;;
-}
-
-#searchInput:focus {
-    border-color: #ff9900;       /* cor da borda ao focar */
-    box-shadow: 0 0 0 0.2rem #333333;  /* sombra externa */
-    outline: none;               /* remove contorno padrão do navegador */
-}
-
 
 .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.5);
@@ -295,4 +50,47 @@ a {
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.text-justify {
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.6;
+}
+
+
+.btn-custom {
+  background-color: #0C2856;
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 0.375rem 0.75rem;
+  text-decoration: none;
+}
+
+.btn-custom:hover {
+  background-color: #163b7a;
+  color: #fff;
+}
+
+.btn-custom-like{
+    background-color: #0C2856;
+    color: #fff;
+}
+
+.btn-filtros {
+  background-color: #e0e0e0;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.btn-filtros:hover {
+  background-color: #d5d5d5;
+}
+
+footer.footer {
+  background-color: #0C2856;
+  color: #fff;
 }
