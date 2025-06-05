@@ -28,5 +28,6 @@ if ($paginaUrl === "user") {
     include_once("controller/cursosController.php");
     include_once("controller/projetosController.php");
     include_once("view/principal.php");
+    include_once("view/footer.php");
 }
 
