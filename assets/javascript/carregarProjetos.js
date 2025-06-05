@@ -1,10 +1,31 @@
 $(document).ready(function () {
   let timeout;
-  $('#searchInput, input[name="curso[]"], input[name="ano[]"]')
-    .on('input change', () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(carregarPI, 500);
-    });
+
+  $('#searchInput, input[name="curso[]"], input[name="ano[]"]').on('input change', () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(carregarPI, 500);
+  });
+
+  // Delegação – funciona para botões inseridos depois via AJAX
+  $('#mainPI').on('click', '.botao-like', function () {
+    const $card = $(this).closest('.card-body');
+    const id    = $card.data('post-id');
+    const $cnt  = $card.find('.contador-likes');
+
+    $.post(URL_CONTROLLER_PROJETOS,
+      { action: 'like', post_id: id },
+      res => {
+        if (res.success) {
+          $cnt.text(res.new_like_count);  // atualiza likes no card
+          $(this).addClass('liked');
+        } else {
+          alert('Erro ao dar like');
+        }
+      },
+      'json'
+    );
+  });
+
   carregarPI();
 });
 
@@ -27,28 +48,10 @@ function carregarPI() {
     },
     dataType: "html",
     success(html) {
-      $("#content_PI").html(html);
-      bindLikes();
+      $("#mainPI").html(html);
     },
     error() {
-      $("#content_PI").html('<p class="center">Erro ao carregar projetos.</p>');
+      $("#mainPI").html('<p class="center">Erro ao carregar projetos.</p>');
     }
-  });
-}
-
-function bindLikes() {
-  $('.botao-like').off('click').on('click', function() {
-    const $card = $(this).closest('.card');
-    const id = $card.data('post-id');
-    const $cnt = $card.find('.contador-likes');
-
-    $.post(URL_CONTROLLER_PROJETOS, { action: 'like', post_id: id }, res => {
-      if (res.success) {
-        $cnt.text(res.new_like_count);
-        $(this).addClass('liked');
-      } else {
-        alert('Erro ao dar like');
-      }
-    }, 'json');
   });
 }
