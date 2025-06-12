@@ -10,10 +10,11 @@ class Acesso
     }
 
 
-    public static function validarSenha($senhaDigitada, $senhaBd){
-        if(!$senhaDigitada || !$senhaBd){return false;}
-        if($senhaDigitada == $senhaBd){return true;}
-        return false;
+    public static function validarSenha($senhaDigitada, $senhaBd) {
+        if (empty($senhaDigitada) || empty($senhaBd)) {
+            return false;
+        }
+        return password_verify($senhaDigitada, $senhaBd);
     }
 
     public static function registrarAcessoValido($usuarioCadastrado){

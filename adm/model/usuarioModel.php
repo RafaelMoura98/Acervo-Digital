@@ -38,8 +38,11 @@ class Usuario{
         return @$list[0];
     }
 
-    public static function criptografia($senha){
-        if(!$senha){return false;}
-        return sha1($senha);
-    }
+    public static function criptografia($senha) {
+        if (empty($senha)) {
+            return false;
+        }
+        return password_hash($senha, PASSWORD_BCRYPT);
+}
+
 }

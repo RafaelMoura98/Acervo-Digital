@@ -1,7 +1,5 @@
 <?php
-
-
-require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/config/conexao.php';
+require_once BASE_PATH . '/config/conexao.php';
 
 
 class Projetos 

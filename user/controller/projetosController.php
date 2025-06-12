@@ -1,5 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/user/model/projetosModel.php';
+require_once __DIR__ . '/../../config/configuracao.php';
+require_once BASE_PATH . '/user/model/projetosModel.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = isset($_POST['action']) ? $_POST['action'] : '';

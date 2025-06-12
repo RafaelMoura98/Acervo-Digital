@@ -1,7 +1,8 @@
 <?php
+require_once __DIR__ . '/../../config/configuracao.php';
+require_once BASE_PATH . '/adm/model/projetosModel.php';
+require_once BASE_PATH . '/config/configuracao.php';
 
-require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/projetosModel.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/config/configuracao.php';
 
 $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
 

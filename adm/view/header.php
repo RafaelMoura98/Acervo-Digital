@@ -1,5 +1,6 @@
 <?php
 include_once($caminhoBaseConfig . "configuracao.php");
+
 ?>
 
 <!DOCTYPE html>

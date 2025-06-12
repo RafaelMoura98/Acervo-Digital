@@ -1,4 +1,4 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/cursosModel.php'; ?>
+<?php require_once BASE_PATH . '/adm/model/cursosModel.php'; ?>
 <section>
     <div class="registro-container">
         <form class="form" method="POST" action="./controller/processamentoPI.php" enctype="multipart/form-data">

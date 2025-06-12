@@ -1,6 +1,7 @@
 <?php
- require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/config/configuracao.php';
- if (empty($projetos)): ?>
+require_once BASE_PATH . '/config/configuracao.php';
+
+if (empty($projetos)): ?>
     <p class="center">Nenhum projeto encontrado.</p>
 <?php else: ?>
     <h2 class="d-flex justify-content-center mb-4"><?= htmlspecialchars($titulo) ?></h2>

@@ -33,6 +33,11 @@ if($exibirErros){
  * Caminho absoluto
  */
 
+// CAMINHOS
+define('BASE_PATH', realpath(dirname(__FILE__) . '/../'));
+define('PROJECT_NAME', $projeto);
+
+
 define("URL_LOCAL_BASE",$enviroment);
 define("URL_LOCAL_SITE",constant("URL_LOCAL_BASE").$projeto);
 define("URL_CONFIGURACAO",constant("URL_LOCAL_SITE").'/configuracao/configuracao.php');

@@ -1,12 +1,11 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/cursosModel.php'; 
+<?php require_once BASE_PATH . '/adm/model/cursosModel.php';
+
 
 
 $dados_antigos = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : [];
 unset($_SESSION['form_data']); // limpar para não manter depois
 
 ?>
-
-
 
 <section>
     <div class="registro-container">

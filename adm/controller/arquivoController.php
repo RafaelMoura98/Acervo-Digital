@@ -1,5 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/projetosModel.php';
+require_once __DIR__ . '/../../config/configuracao.php';
+require_once BASE_PATH . '/adm/model/projetosModel.php';
 
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 $modo = isset($_GET['modo']) ? $_GET['modo'] : null;

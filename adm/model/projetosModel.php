@@ -1,7 +1,6 @@
 <?php
+require_once BASE_PATH . '/config/conexao.php';
 
-
-require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/config/conexao.php';
 
 
 class Projetos 
@@ -184,16 +183,25 @@ class Projetos
         return ($stmt->execute())?true:false;
     }
 
-    public static function apagarUploads($arquivoAntigo)
-    {
-        if ($arquivoAntigo) {
-            $caminhoAntigo = $_SERVER['DOCUMENT_ROOT'] 
-                . '/../assets/uploads/' 
-                . $arquivoAntigo;
-            if (is_file($caminhoAntigo)) {
-                unlink($caminhoAntigo);
+    public static function apagarUploads($arquivoAntigo) {
+        if (!empty($arquivoAntigo)) {
+            // Define o caminho base corretamente para PHP 5.6
+            $basePath = dirname(dirname(__DIR__)); // Volta 2 níveis a partir do diretório atual
+            
+            // Monta o caminho completo de forma segura
+            $caminhoAntigo = realpath($basePath . '/assets/uploads/' . $arquivoAntigo);
+            
+            // Verificações extras de segurança
+            if ($caminhoAntigo && is_file($caminhoAntigo)) {
+                // Verifica se o arquivo está realmente no diretório de uploads
+                $uploadsDir = realpath($basePath . '/assets/uploads/');
+                if (strpos($caminhoAntigo, $uploadsDir) === 0) {
+                    unlink($caminhoAntigo);
+                    return true;
+                }
             }
         }
+        return false;
     }
 
     public static function uploadArquivoComHash($arquivoUpload, $arquivoAntigo = null)

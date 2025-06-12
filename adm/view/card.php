@@ -1,5 +1,4 @@
 <?php
- require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/config/configuracao.php';
  if (empty($projetos)): ?>
     <p class="center">Nenhum projeto encontrado.</p>
 <?php else: ?>
