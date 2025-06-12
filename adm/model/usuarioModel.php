@@ -39,10 +39,28 @@ class Usuario{
     }
 
     public static function criptografia($senha) {
-        if (empty($senha)) {
+        if (empty($senha) || !is_string($senha)) {
             return false;
         }
-        return password_hash($senha, PASSWORD_BCRYPT);
+
+        // Gera um salt aleatório (22 caracteres)
+        $salt = substr(str_replace('+', '.', base64_encode(openssl_random_pseudo_bytes(17))), 0, 22);
+        
+        // Custo (10 é padrão seguro)
+        $custo = '10';
+
+        // Monta o hash Bcrypt manual
+        return crypt($senha, '$2y$' . $custo . '$' . $salt . '$');
+    }
+
+    // Verifica se a senha digitada corresponde ao hash armazenado
+    public static function validarSenha($senhaDigitada, $senhaHash) {
+        if (empty($senhaDigitada) || empty($senhaHash) || !is_string($senhaDigitada) || !is_string($senhaHash)) {
+            return false;
+        }
+
+        // Compara usando o próprio hash como base (Bcrypt é determinístico com mesmo salt)
+        return crypt($senhaDigitada, $senhaHash) === $senhaHash;
+    }
 }
 
-}

@@ -10,12 +10,12 @@ class Acesso
     }
 
 
-    public static function validarSenha($senhaDigitada, $senhaBd) {
-        if (empty($senhaDigitada) || empty($senhaBd)) {
-            return false;
-        }
-        return password_verify($senhaDigitada, $senhaBd);
-    }
+    // public static function validarSenha($senhaDigitada, $senhaBd) {
+    //     if (empty($senhaDigitada) || empty($senhaBd)) {
+    //         return false;
+    //     }
+    //     return password_verify($senhaDigitada, $senhaBd);
+    // }
 
     public static function registrarAcessoValido($usuarioCadastrado){
         $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
