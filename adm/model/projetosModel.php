@@ -188,7 +188,7 @@ class Projetos
     {
         if ($arquivoAntigo) {
             $caminhoAntigo = $_SERVER['DOCUMENT_ROOT'] 
-                . '/Acervo-Digital/assets/uploads/' 
+                . '/../assets/uploads/' 
                 . $arquivoAntigo;
             if (is_file($caminhoAntigo)) {
                 unlink($caminhoAntigo);
@@ -196,7 +196,7 @@ class Projetos
         }
     }
 
-    public static function uploadArquivoComHash($arquivoUpload, ?string $arquivoAntigo = null)
+    public static function uploadArquivoComHash($arquivoUpload, $arquivoAntigo = null)
     {
         
         date_default_timezone_set('America/Sao_Paulo');

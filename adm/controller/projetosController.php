@@ -2,33 +2,33 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/adm/model/projetosModel.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'] ?? '';
+    $action = isset($_POST['action']) ? $_POST['action'] : '';
 
-    switch ($action) {
-        case 'carregar_html_projetos':
-            $termo  = $_POST['termo'] ?? '';
-            $cursos = $_POST['cursos'] ?? [];
-            $anos   = $_POST['anos'] ?? [];
+switch ($action) {
+    case 'carregar_html_projetos':
+        $termo  = isset($_POST['termo']) ? $_POST['termo'] : '';
+        $cursos = isset($_POST['cursos']) ? $_POST['cursos'] : array(); // No PHP 5.6, arrays usam array() em vez de []
+        $anos   = isset($_POST['anos']) ? $_POST['anos'] : array();
 
-            if (trim($termo) !== '') {
-                $projetos = Projetos::buscarPorTermo($termo);
-                $titulo   = count($projetos) . " Resultado(s) Encontrado(s)";
-                include '../view/card.php';
-            } elseif (empty($cursos) && empty($anos)) {
-                $ultimos  = Projetos::ultimosProjetos();
-                $curtidos = Projetos::ProjetosMaisCurtidos();
+        if (trim($termo) !== '') {
+            $projetos = Projetos::buscarPorTermo($termo);
+            $titulo   = count($projetos) . " Resultado(s) Encontrado(s)";
+            include '../view/card.php';
+        } elseif (empty($cursos) && empty($anos)) {
+            $ultimos  = Projetos::ultimosProjetos();
+            $curtidos = Projetos::ProjetosMaisCurtidos();
 
-                $titulo = 'Últimos Projetos';  $projetos = $ultimos;
-                include '../view/card.php';
+            $titulo = 'Últimos Projetos';  $projetos = $ultimos;
+            include '../view/card.php';
 
-                $titulo = 'Projetos Mais Curtidos'; $projetos = $curtidos;
-                include '../view/card.php';
-            } else {
-                $projetos = Projetos::consultarProjetos($cursos, $anos);
-                $titulo   = 'Projetos Filtrados - ' . count($projetos) . ' Resultado(s)';
-                include '../view/card.php';
-            }
-            exit;
+            $titulo = 'Projetos Mais Curtidos'; $projetos = $curtidos;
+            include '../view/card.php';
+        } else {
+            $projetos = Projetos::consultarProjetos($cursos, $anos);
+            $titulo   = 'Projetos Filtrados - ' . count($projetos) . ' Resultado(s)';
+            include '../view/card.php';
+        }
+        exit;
 
         case 'like':
             header('Content-Type: application/json');

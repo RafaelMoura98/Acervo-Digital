@@ -2,7 +2,7 @@
 
 if($_GET && isset($_GET['pagina'])){
     $paginaUrl = $_GET['pagina'];
-    $id = $_GET['id'] ?? null;
+    @$id = $_GET['id'];
 }else{
     $paginaUrl = null;
 }

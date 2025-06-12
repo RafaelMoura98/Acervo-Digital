@@ -1,8 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/Acervo-Digital/user/model/projetosModel.php';
 
-$id = $_GET['id'] ?? null;
-$modo = $_GET['modo'] ?? '';
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+$modo = isset($_GET['modo']) ? $_GET['modo'] : null;
 
 
 if (!$id || !in_array($modo, ['visualizar', 'download'])) {
