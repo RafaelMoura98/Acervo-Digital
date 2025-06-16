@@ -234,7 +234,8 @@ class Projetos
         // Nome com hash do título
         $nomeHash = hash('sha1', $dataHora);
         $nomeFinal = $nomeHash . '.pdf';
-        $destino = $_SERVER['DOCUMENT_ROOT'] . '/Acervo-Digital/assets/uploads/' . $nomeFinal;
+        $destino = BASE_PATH . '/assets/uploads/' . $nomeFinal;
+        
 
         if (file_exists($destino)) {
             return 'arquivo_ja_existe';

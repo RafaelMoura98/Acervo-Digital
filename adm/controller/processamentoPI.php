@@ -16,7 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $paginaUrl = isset($_POST['paginaUrl']) ? $_POST['paginaUrl'] : null;
     $paginaUrl = base64_decode($paginaUrl);
     $id = isset($_POST['id_projeto']) ? $_POST['id_projeto'] : null;
-    $id = base64_decode($id);
+    if ($id != null){
+        $id = base64_decode($id);
+    }
     $arquivoAntigo = isset($_POST['arquivoAntigo']) ? $_POST['arquivoAntigo'] : null;
 
     // 2) Validações (mantidas iguais, pois não usam ??)
