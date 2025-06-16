@@ -22,6 +22,7 @@ unset($_SESSION['form_data']); // limpar para não manter depois
             <br>
             <div class="input-box">
                 <select name="id_curso" class="curso">
+                    <option value= "0">Selecione um curso</option>
                     <?php foreach (Cursos::consultarNomeCursos() as $info_curso): ?>
                         <option value="<?= $info_curso["id"] ?>"
                             <?= (isset($dados_antigos['curso']) && $dados_antigos['curso'] == $info_curso["id"]) ? 'selected' : '' ?>>

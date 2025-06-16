@@ -54,6 +54,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<script>alert('$msg');window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . "cadastrarPI';</script>";
         exit;
     }
+    
+    if ($id_curso == 0) {
+        $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
+        $msg = 'Selecione um curso válido.';
+        if ($isAjax) {
+            echo json_encode(array('success' => false, 'message' => $msg));
+            exit;
+        }
+        echo "<script>alert('$msg');window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . "cadastrarPI';</script>";
+        exit;
+    }
 
     // 3) Upload (mantido igual)
     $uploadResultado = Projetos::uploadArquivoComHash($_FILES['fileToUpload'], $arquivoAntigo);
