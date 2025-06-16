@@ -84,13 +84,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // 4) Banco (mantido igual)
     if ($paginaUrl === "cadastrarPI") {
-        $cadastrado = Projetos::cadastrarPI(
-            $nome_titulo,
-            $resumo,
-            $id_curso,
-            $ano_publicacao,
-            $arquivo
-        );
+        $valirPI = Projetos::verificarProjetoExistente($nome_titulo, $ano_publicacao);
+        if ($valirPI) {
+            $_SESSION['form_data'] = compact('nome_titulo','resumo','id_curso','ano_publicacao');
+            $msg = 'Já existe um projeto cadastrado com esse título e ano.';
+            if ($isAjax) {
+                echo json_encode(array('success' => false, 'message' => $msg));
+                exit;
+            }
+            echo "<script>alert('$msg');window.location.href='".constant("URL_LOCAL_SITE_PAGINA_ADM") . "cadastrarPI';</script>";
+            exit;
+        }else{
+            $cadastrado = Projetos::cadastrarPI(
+                $nome_titulo,
+                $resumo,
+                $id_curso,
+                $ano_publicacao,
+                $arquivo
+            );
+        }
     } elseif ($paginaUrl === "editarPI") {
         $cadastrado = Projetos::editarPI(
             $id,

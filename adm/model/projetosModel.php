@@ -183,6 +183,19 @@ class Projetos
         return ($stmt->execute())?true:false;
     }
 
+    public static function verificarProjetoExistente($titulo, $ano)
+    {
+        $pdo = Database::conexao();
+        $sql = "SELECT COUNT(*) as total FROM pi_bd WHERE titulo = :titulo AND ano = :ano";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':titulo', $titulo);
+        $stmt->bindValue(':ano', $ano);
+        $stmt->execute();
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        return ($resultado['total'] > 0);
+    }
+
     public static function apagarUploads($arquivoAntigo) {
         if (!empty($arquivoAntigo)) {
             // Define o caminho base corretamente para PHP 5.6
@@ -248,4 +261,5 @@ class Projetos
         return false;
     }
 
+    
 }
