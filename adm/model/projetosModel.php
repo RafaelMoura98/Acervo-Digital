@@ -198,16 +198,14 @@ class Projetos
 
     public static function apagarUploads($arquivoAntigo) {
         if (!empty($arquivoAntigo)) {
-            // Define o caminho base corretamente para PHP 5.6
-            $basePath = dirname(dirname(__DIR__)); // Volta 2 níveis a partir do diretório atual
             
             // Monta o caminho completo de forma segura
-            $caminhoAntigo = realpath($basePath . '/assets/uploads/' . $arquivoAntigo);
+            $caminhoAntigo = BASE_PATH . '/assets/uploads/' . $arquivoAntigo;
             
             // Verificações extras de segurança
             if ($caminhoAntigo && is_file($caminhoAntigo)) {
                 // Verifica se o arquivo está realmente no diretório de uploads
-                $uploadsDir = realpath($basePath . '/assets/uploads/');
+                $uploadsDir =  BASE_PATH . '/assets/uploads/';
                 if (strpos($caminhoAntigo, $uploadsDir) === 0) {
                     unlink($caminhoAntigo);
                     return true;

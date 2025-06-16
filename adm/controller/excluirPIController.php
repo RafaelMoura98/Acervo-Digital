@@ -5,8 +5,6 @@ require_once BASE_PATH . '/adm/model/projetosModel.php';
 
 
 if (!isset($_GET['id'])) {
-    var_dump($_GET);die;
-    // nenhum ID enviado
     header('Location: ' . constant("URL_LOCAL_SITE_PAGINA_ADM") . 'principal');
     exit;
 }
