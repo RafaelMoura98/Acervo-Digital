@@ -19,7 +19,7 @@ include_once($caminhoBaseConfig . "configuracao.php");
     <nav class="navbar navbar-expand-lg navbar-color-default">
         <div class="container-fluid">
 
-            <a class="navbar-brand d-flex align-items-center" href="<?= constant('URL_LOCAL_SITE_PAGINA_ADM') . 'principal' ?>" style="text-decoration: none; color: #fff;">
+            <a class="navbar-brand d-flex align-items-center" href="<?= constant('URL_LOCAL_SITE_PAGINA') . 'user' ?>" style="text-decoration: none; color: #fff;">
                 <img src="<?= $caminhoBaseAssets . '/imagens/logo.png' ?>" alt="Logo" height="40px" class="me-3">
                 SkyFile
             </a>
