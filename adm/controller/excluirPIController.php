@@ -5,7 +5,7 @@ require_once BASE_PATH . '/adm/model/projetosModel.php';
 
 if (!isset($_SESSION['usuario'])) {
     // Usuário não está logado, redireciona para a página de login
-    header('Location: ' . constant("URL_LOCAL_SITE_PAGINA_ADM") . 'adm');
+    header('Location: ' . constant("URL_LOCAL_SITE_PAGINA") . 'adm');
     exit;
 }
 

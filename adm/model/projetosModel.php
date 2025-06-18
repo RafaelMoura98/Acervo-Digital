@@ -238,7 +238,7 @@ class Projetos
             return 'erro_tipo';
         }
 
-        if ($tamanho > 2 * 1024 * 1024) {
+        if ($tamanho > 4 * 1024 * 1024) {
             return 'erro_tamanho';
         }
 
